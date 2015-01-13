@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	<form-bean name="loginForm" type="form.LoginForm" />
+  	<form-bean name="uploadGoodsForm" type="form.UploadGoodsForm" />
+  	<form-bean name="wantChangeForm" type="form.WantChangeForm" />
+  	<form-bean name="startExchangeForm" type="form.StartExchangeForm" />
+  	<form-bean name="goodsdetailForm" type="form.GoodsdetailForm" />
+  	<form-bean name="searchGoodsForm" type="form.SearchGoodsForm" />
+  	<form-bean name="editTradeInformationForm" type="form.EditTradeInformationForm" />
+  	<form-bean name="confirmTrade" type="form.ConfirmTradeForm" />
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+  	<action
+      attribute="loginForm"
+      input="/login.jsp"
+      name="loginForm"
+      path="/login"
+      type="action.LoginAction">
+      <forward name="success" path="/index.jsp" />
+      <forward name="failed" path="/login.jsp" />
+    </action>
+    <action
+      attribute="uploadGoodsForm"
+      input="/uploadGoods.jsp"
+      name="uploadGoodsForm"
+      path="/uploadGoods"
+      type="action.UploadGoodsAction">
+      <forward name="success" path="/index.jsp" />
+    </action>
+    <action
+      attribute="wantChangeForm"
+      input="/index.jsp"
+      name="wantChangeForm"
+      path="/wantChange"
+      type="action.WantChangeAction">
+      <forward name="success" path="/wantChange.jsp" />
+    </action>
+     <action
+      attribute="goodsdetailForm"
+      name="goodsdetailForm"
+      path="/goodsdetail"
+      type="action.GoodsdetailAction">
+      <forward name="success" path="/Goodsdetail.jsp" />
+    </action>
+    <action
+      attribute="startExchangeForm"
+      name="startExchangeForm"
+      path="/startExchange"
+      type="action.StartExchangeAction">
+      <forward name="success" path="/login.jsp" />
+      <forward name="wantChange" path="/wantChange.do" />
+      <forward name="wantedChange" path="/wantedChange.jsp" />
+      <forward name="noLogin" path="/noLogin.jsp" />
+      <forward name="goodsDetail" path="/Goodsdetail.jsp" />
+      <forward name="showGoods" path="/showGoods.jsp" />
+      <forward name="changeTalk" path="/changetalk.jsp" />
+    </action>
+    <action
+      attribute="searchGoodsForm"
+      name="searchGoodsForm"
+      path="/searchGoods"
+      type="action.SearchGoodsAction">
+      <forward name="success" path="/showGoods.jsp" />
+    </action>
+    <action
+      attribute="editTradeInformationForm"
+      input="/editTradeInformation.jsp"
+      name="editTradeInformationForm"
+      path="/editTradeInformation"
+      type="action.EditTradeInformationAction">
+      <forward name="success" path="/changetalk.jsp" />
+      <forward name="failed" path="/error.jsp" />
+    </action>
+    <action
+      attribute="confirmTrade"
+      name="confirmTrade"
+      path="/confirmTrade"
+      type="action.ConfirmTradeAction">
+      <forward name="changetalk" path="/changetalk.jsp" />
+      <forward name="exchanging" path="/exchanging.jsp" />
+      <forward name="failed" path="/error.jsp" />
+    </action>
+    
+  </action-mappings>
+  <message-resources parameter="struts.ApplicationResources" />
+</struts-config>
+
