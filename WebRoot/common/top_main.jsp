@@ -35,11 +35,11 @@
                     <i class="mt-arrow"></i>
                 </li>
                 <li class="selected">
-                    <a href=""  target="_blank">个人空间</a>
+                    <a href="wantChange.do">个人空间</a>
                     <i class="mt-arrow"></i>
                 </li> 
                 <li class="">
-                    <a class="mt-nav-parent" href="" >消息</a>
+                    <a class="mt-nav-parent" href="" ></a>
                     <i class="mt-arrow"></i>
                 </li>
             </ul> 

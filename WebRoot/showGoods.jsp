@@ -61,9 +61,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div data-toggle="arrowdown" id="arrow3" class="user-name">
 					<a href="#">个人空间</a> <span class="down-icon"></span>
 				</div>
-				<span class="vertical-line">|</span> <a class="a-float-left"
-					href="#"> <% out.print(userName); %>,欢迎您 </a> <span
-					class="vertical-line">|</span> <a onclick=shezhi()>注销</a>
+				<span class="vertical-line">|</span> 
+				<span class="a-float-left">
+            		<% out.print(userName); %>,欢迎您
+       			</span>
+       			<span class="vertical-line">|</span>
+      			<a href="javascript:shezhi()">注销</a>
 				<form id="zhuxiao" action="index.jsp" method="post">
 					<input type="hidden" name="zhuxiao">
 				</form>
@@ -141,8 +144,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							}
 						}else{
 							%>
-							
-							
+							<div style="margin-top:80px;margin-bottom:300px;">
+								<h2>对不起，没有找到符合您的搜索要求的物品</h2>
+							</div>
 							<%
 						}
 						%>

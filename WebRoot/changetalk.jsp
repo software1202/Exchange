@@ -133,7 +133,7 @@
 						<td class="column" colspan="1">
 							<span class="g-u">	
 							</span>
-							<a target="_blank" class="shopname J_MakePoint" title="东方" ><%out.print(tradeAUserName); %></a>
+							<a target="_blank" class="shopname J_MakePoint" title="" ><%out.print(tradeAUserName); %></a>
 						</td>
 
 												<td class="column" colspan="1">
@@ -214,6 +214,9 @@
 						<td class="trade-operate" rowspan=" 1 ">
 							<span class="skin-white">  </span>
 							<%
+							
+							//未取消交易
+							if(AuserStatus.equals("04")&&BuserStatus.equals("04")){
 								if(exstatus.equals("00")){
 									if(userId.equals(Auser.getUserId())){
 									%>
@@ -253,6 +256,11 @@
 										<%
 									}
 								}
+							}else{
+								%>
+									<a href="javascript:formSubmit('stopExchange<%out.print(i+"");%>')" class="J_Rebuy">取消交易</a>
+								<%
+							}
 							 %> 
 						</td>
 						<!--每一个订单的提交表单 -->
@@ -292,10 +300,10 @@
 								<div class="form">
 									<span class="text">当前是第<%out.print(pageIndex); %> 页</span>
 								</div>
-								<form id="pageNext" action="wantChange.do" method="post">
+								<form id="pageNext" action="changetalk.jsp" method="post">
           							<input type="hidden" name="pageIndex" value="<%out.print(pageIndex+1);%>">
      							</form>
-     							<form id="pagepre" action="wantChange.do" method="post">
+     							<form id="pagepre" action="changetalk.jsp" method="post">
           							<input type="hidden" name="pageIndex" value="<%out.print(pageIndex-1);%>">
      							</form>
 									<script language="javascript">

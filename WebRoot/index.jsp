@@ -48,15 +48,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             			%>
             				
             				<div data-toggle="arrowdown" id="arrow3" class="user-name">
-                    		<a href="#">个人空间</a>
+                    		个人空间
                     		<span class="down-icon"></span>
                 			</div>
                 			<span class="vertical-line">|</span>
-                			<a class="a-float-left" href="#">
+                			<span class="a-float-left">
             					<% out.print(userName); %>,欢迎您
-            				</a>
+            				</span>
             				<span class="vertical-line">|</span>
-                			<a onclick=shezhi()>注销</a>
+                			<a href="javascript:shezhi()">注销</a>
                 			<form id="zhuxiao" action="index.jsp" method="post">
                 				<input type="hidden" name="zhuxiao">
                 			</form>

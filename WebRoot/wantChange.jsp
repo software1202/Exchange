@@ -135,7 +135,7 @@
 									</div>
 								</td>
 								<td class="column" colspan="2"><span class="g-u">
-								</span> <a target="_blank" class="shopname J_MakePoint" title="东方"><b>换客姓名：</b><% out.print(tradeBUserName);%></a>
+								</span> <a target="_blank" class="shopname J_MakePoint" title=""><b>换客姓名：</b><% out.print(tradeBUserName);%></a>
 								</td>
 								<td class="column"/>
 								<td class="last" colspan="3"></td>
@@ -189,7 +189,7 @@
 								
 								<!--每一个订单的提交表单 -->
                 				<form id="startExchange<%out.print(i+"");%>" action="startExchange.do" method="post">
-                					<input type="hidden" name="state" value="50">
+                					<input type="hidden" name="state" value="20">
                 					<input type="hidden" name="tradeId" value="<%out.print(tradeId);%>">
                 				</form>
 							</tr>

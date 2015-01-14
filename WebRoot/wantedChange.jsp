@@ -136,7 +136,7 @@
 									</div>
 								</td>
 								<td class="column" colspan="2"><span class="g-u">
-								</span> <a target="_blank" class="shopname J_MakePoint" title="东方"><b>对方姓名：</b><% out.print(tradeBUserName);%></a>
+								</span> <a target="_blank" class="shopname J_MakePoint" title=""><b>对方姓名：</b><% out.print(tradeBUserName);%></a>
 								</td>
 								<td class="column"/>
 								<td class="last" colspan="3"></td>
@@ -244,10 +244,10 @@
 								<div class="form">
 									<span class="text">当前是第<%out.print(pageIndex); %> 页</span>
 								</div>
-								<form id="pageNext" action="wantChange.do" method="post">
+								<form id="pageNext" action="wantedChange.jsp" method="post">
           							<input type="hidden" name="pageIndex" value="<%out.print(pageIndex+1);%>">
      							</form>
-     							<form id="pagepre" action="wantChange.do" method="post">
+     							<form id="pagepre" action="wantedChange.jsp" method="post">
           							<input type="hidden" name="pageIndex" value="<%out.print(pageIndex-1);%>">
      							</form>
 									<script language="javascript">

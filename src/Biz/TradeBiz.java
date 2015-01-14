@@ -20,7 +20,7 @@ public class TradeBiz {
 	//查询所有的booking中是否有这个物品
 	private boolean isGoodsInBooking(String goodsId){
 		Session session = HibernateSessionFactory.getSession();
-		Query query = session.createQuery("from Booking where goodsByAgoods="+goodsId+" or goodsByBgoods="+goodsId+" and astatus='04' and bstatus='04'");
+		Query query = session.createQuery("from Booking where (goodsByAgoods='"+goodsId+"' or goodsByBgoods='"+goodsId+"') and ((astatus='04' and bstatus='04') or (astatus='06' and bstatus='06'))");
 		
 		if(query.list().size()==0){
 			return false;
@@ -38,6 +38,7 @@ public class TradeBiz {
 		
 		//该物品已经被换享
 		if(isGoodsInBooking(Bgoods.getGoodsId())){
+			
 			return "101";
 		}
 		
@@ -51,7 +52,7 @@ public class TradeBiz {
 		
 		Booking booking = new Booking();
 		String bookingId = Long.toString(nowDate.getTime());// new Date()为获取当前系统时间
-		System.out.println(bookingId);
+		
 		booking.setBookingId("t"+bookingId);
 		booking.setGoodsByBgoods(Bgoods);
 		booking.setUserByAuserId(Auser);
@@ -114,6 +115,7 @@ public class TradeBiz {
 			
 			//该物品已经被换享
 			if(isGoodsInBooking(Agoods.getGoodsId())){
+				System.out.println(goodsId);
 				return "101";
 			}
 			
@@ -121,6 +123,7 @@ public class TradeBiz {
 			
 			
 			//不能换享自己的物品
+			System.out.println(booking);
 			if(!Agoods.getUser().getUserId().equals(booking.getUserByAuserId().getUserId())) return "102";
 			
 			
@@ -134,7 +137,7 @@ public class TradeBiz {
 			return "103";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "101";
+			return "104";
 		}
 	}
 	//用户拒绝一个换享

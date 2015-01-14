@@ -108,7 +108,7 @@
 							Booking booking = (Booking)tradeList.get(i);
 							User Auser = booking.getUserByAuserId();
 							User Buser = booking.getUserByBuserId();
-							Goods Agoods = booking.getGoodsByBgoods();
+							Goods Agoods = booking.getGoodsByAgoods();
 							Goods Bgoods = booking.getGoodsByBgoods();
 							
 							String tradeId = booking.getBookingId();
@@ -125,11 +125,11 @@
 							
 							String tradeAUserName = Auser.getUserNickName();
 							tradeAUserName = new String(tradeAUserName.getBytes("ISO-8859-1"),"UTF-8");
-							String tradeAUserId = Buser.getUserId();
-							String AuserStatus = booking.getBstatus();
-							String AgoodsImgPath = Bgoods.getImage();
-							String AgoodsId = Bgoods.getGoodsId();
-							String AgoodsName = Bgoods.getGoodsName();
+							String tradeAUserId = Auser.getUserId();
+							String AuserStatus = booking.getAstatus();
+							String AgoodsImgPath = Agoods.getImage();
+							String AgoodsId = Agoods.getGoodsId();
+							String AgoodsName = Agoods.getGoodsName();
 							
 							String AuserAddress = Auser.getAddress();
 							// AuserAddress = new String(AuserAddress.getBytes(),"UTF-8");
@@ -147,14 +147,14 @@
 							    <span>
 									
 								</span>
-								<a target="_blank" class="shopname J_MakePoint" title="东方"><b>甲方姓名：</b><%out.print(tradeAUserName); %></a>
+								<a target="_blank" class="shopname J_MakePoint" title=""><b>甲方姓名：</b><%out.print(tradeAUserName); %></a>
 						</div></td><td class="column" colspan="2">
 							<span class="g-u">	
 							</span>
-							<a target="_blank" class="shopname J_MakePoint" title="东方"><b>换家姓名：</b><%out.print(tradeBUserName); %></a>
+							<a target="_blank" class="shopname J_MakePoint" title=""><b>换家姓名：</b><%out.print(tradeBUserName); %></a>
 						</td>
 						<td class="column">
-							<span class="ww-light ww-large" data-nick="东方" data-tnick="东方" data-display="inline" data-item="$bizOrder.itemID:830615123442932" data-point-url="http://gm.mmstat.com/listbought.1.13"><a href="" target="_blank" class="ww-inline ww-online" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a></span>
+							<span class="ww-light ww-large" data-nick="" data-tnick="" data-display="inline" data-item="$bizOrder.itemID:830615123442932" data-point-url="http://gm.mmstat.com/listbought.1.13"><a href="" target="_blank" class="ww-inline ww-online" title="点此可以直接和卖家交流选好的宝贝，或相互交流网购体验，还支持语音视频噢。"></a></span>
 						</td>
 						<td class="last" colspan="3">
 							
@@ -223,7 +223,7 @@
 									
 								</span>
 								
-								<a target="_blank" class="shopname J_MakePoint" title=" "><b>我的物品：</b> </a>
+								<a target="_blank" class="shopname J_MakePoint" title=" "><b>甲方物品：</b> </a>
 							</div>
 						</td>
 						<td class="column" colspan="2">
@@ -241,7 +241,7 @@
    
 					<tr id="item830615123442932" class="order-bd last     order-last">
 						<td class="baobei">
-							<a target="_blank" hidefocus="true" title="查看宝贝详情" href="" class="pic J_MakePoint" data-point-url="http://gm.mmstat.com/listbought.2.5">
+							<a target="_blank" hidefocus="true" title="查看宝贝详情" href="goodsdetail.do?goodsId=<%out.print(BgoodsId);%>" class="pic J_MakePoint" data-point-url="http://gm.mmstat.com/listbought.2.5">
 								<img alt="查看宝贝详情" src="<%out.print(AgoodsImgPath);%>">
 							</a>
 							
@@ -251,6 +251,7 @@
 
 						<td class="price" title="98.39">
 							<!-- 描述 -->
+							<% out.print(AgoodsName); %>
 						</td>
    
 						<td class="quantity" title="1">
@@ -299,7 +300,7 @@
 								<span>
 									
 								</span>
-								<a target="_blank" class="shopname J_MakePoint" title="东方"><b>换家物品：</b></a>
+								<a target="_blank" class="shopname J_MakePoint" title=""><b>乙方物品：</b></a>
 							</div>
 						</td>
 						<td class="column" colspan="2">
@@ -318,14 +319,14 @@
    
 					<tr id="item830615123442932" class="order-bd last     order-last">
 						<td class="baobei">
-							<a target="_blank" hidefocus="true" title="查看宝贝详情" href="" class="pic J_MakePoint" data-point-url="http://gm.mmstat.com/listbought.2.5">
+							<a target="_blank" hidefocus="true" title="查看宝贝详情" href="goodsdetail.do?goodsId=<%out.print(BgoodsId);%>" class="pic J_MakePoint" data-point-url="http://gm.mmstat.com/listbought.2.5">
 							<img alt="查看宝贝详情" src="<%out.print(BgoodsImgPath);%>">
 							</a>
 							
 						</td>
 
 						<td class="price" title="98.39">
-							<i class="special-num"></i>
+							<% out.print(BgoodsName); %>
 						</td>
    
 						<td class="quantity" title="1">
@@ -334,7 +335,7 @@
  
 						<td class="item-operate">
 							
-							<a href="goodsdetail.do?goodsId=<%out.print(AgoodsId);%>">物品详情</a> 
+							<a href="goodsdetail.do?goodsId=<%out.print(BgoodsId);%>">物品详情</a> 
 							<input type="hidden" id="pioneerRulesType" value="">
 						</td>
 
@@ -383,10 +384,10 @@
 								<div class="form">
 									<span class="text">当前是第<%out.print(pageIndex); %> 页</span>
 								</div>
-								<form id="pageNext" action="wantChange.do" method="post">
+								<form id="pageNext" action="exchanging.jsp" method="post">
           							<input type="hidden" name="pageIndex" value="<%out.print(pageIndex+1);%>">
      							</form>
-     							<form id="pagepre" action="wantChange.do" method="post">
+     							<form id="pagepre" action="exchanging.jsp" method="post">
           							<input type="hidden" name="pageIndex" value="<%out.print(pageIndex-1);%>">
      							</form>
 									<script language="javascript">

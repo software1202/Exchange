@@ -66,7 +66,7 @@ public class StartExchangeAction extends Action{
 				//用户在wanted步骤发起换享
 				String goodsId = startExchangeForm.getGoodsId();
 				String result = tradeBiz.agreeExchange(flagTradeId, goodsId);
-				System.out.println(result);//////////////////////////////////////////
+				
 				if(result.equals("103")){
 					request.setAttribute("operator", "yes");
 					session.removeAttribute("flagTradeId");
@@ -90,6 +90,7 @@ public class StartExchangeAction extends Action{
 			}else{
 				request.setAttribute("operator", "no");
 			}
+			System.out.println("---");
 			return mapping.findForward("wantChange");
 		}else if(state.equals("30")){
 			//用户查看一个其他用户的物品,tradeId
@@ -104,7 +105,7 @@ public class StartExchangeAction extends Action{
 			List goodsList=goodsBiz.getUserAllGoods(userIdOfGoods);
 			request.setAttribute("goodsList", goodsList);
 			session.setAttribute("flagTradeId", tradeId);
-			System.out.println("flagTradeId : yes");
+			
 			return mapping.findForward("showGoods");
 		}else if(state.equals("31")){
 			//用户拒绝一个其他用户发起的换享
