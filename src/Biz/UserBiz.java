@@ -2,6 +2,7 @@ package Biz;
 
 import hibernate.District;
 import hibernate.DistrictDAO;
+import hibernate.Goods;
 import hibernate.HibernateSessionFactory;
 import hibernate.User;
 import hibernate.UserDAO;
@@ -17,7 +18,20 @@ import org.hibernate.criterion.Restrictions;
 
 public class UserBiz {
 	
-	
+	public boolean isLegal(String userName){
+		Session session = HibernateSessionFactory.getSession();
+		Criteria criteria = session.createCriteria(User.class); 
+		criteria.add(Restrictions.eq("userId", userName)); 
+		List userList = criteria.list(); 
+		
+		if(userList.size()!=0){
+			User user = (User) userList.get(0);
+			if(user.getStatus().equals("00")){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	public String userLogin(String userName,String password){
 		
@@ -72,7 +86,40 @@ public class UserBiz {
 		return true;
 	}
 	
+	public boolean deleteUserById(String userId){
+		try {
+			Session session = HibernateSessionFactory.getSession();
+			session.beginTransaction();  
+			Query query = session.createQuery("update User u set u.status = '01' where u.userId='"+userId+"'");  
+			query.executeUpdate();  
+			session.getTransaction().commit(); 
+			session.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean recoverUserById(String userId){
+		try {
+			Session session = HibernateSessionFactory.getSession();
+			session.beginTransaction();  
+			Query query = session.createQuery("update User u set u.status = '00' where u.userId='"+userId+"'");  
+			query.executeUpdate();  
+			session.getTransaction().commit(); 
+			session.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
+	public List getAllUser(){
+		Session session = HibernateSessionFactory.getSession();
+		Query query = session.createQuery("from User");
+		return query.list();
+	}
 	
 
 }

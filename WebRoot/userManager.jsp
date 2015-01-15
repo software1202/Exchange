@@ -53,28 +53,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		UserBiz userBiz = new UserBiz();
 
-		if(request.getParameter("content")!=null){
-			String content = (String)request.getParameter("content");
-			content = new String(content.getBytes("iso-8859-1"),"UTF-8");
-			String contentType = request.getParameter("contentType");
-			
-			if(informBiz.addInform(content, contentType)){
+		if(request.getParameter("delete")!=null){
+			String userId = request.getParameter("userId");
+			if(userBiz.deleteUserById(userId)){
 				%>
 					<script>
-						alert("添加成功");
+						alert("封号成功");
 					</script>
 				<%
 			}else{
 				%>
 					<script>
-						alert("添加失败");
+						alert("封号失败");
+					</script>
+				<%
+			}
+		}
+		if(request.getParameter("recover")!=null){
+			String userId = request.getParameter("userId");
+			if(userBiz.recoverUserById(userId)){
+				%>
+					<script>
+						alert("解封成功");
+					</script>
+				<%
+			}else{
+				%>
+					<script>
+						alert("解封失败");
 					</script>
 				<%
 			}
 		}
 		int pageIndex =1;
 		int pageNum = 1; //显示的分页数目
-		int singlePageNum = 5;
+		int singlePageNum = 8;
 		if(request.getParameter("pageIndex")!=null){
 			pageIndex= Integer.parseInt((String)request.getParameter("pageIndex"));
 		}
@@ -99,44 +112,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td style="width:10%">用户账号</td>   
            <td style="width:10%">用户昵称</td>   
            <td style="width:15%">时间</td>   
-           <td style="width:15%">类型</td>  
+           <td style="width:15%">状态</td>  
            <td align="center" width = "10%">操作</td>    
       	</tr> 
       	<%
-      		List informList = informBiz.getInformList();
-      		if(informList.size()%singlePageNum==0)
-				pageNum = informList.size()/singlePageNum;
+      		List userList = userBiz.getAllUser();
+      		System.out.print("--");
+      		if(userList.size()%singlePageNum==0)
+				pageNum = userList.size()/singlePageNum;
 			else
-				pageNum = informList.size()/singlePageNum+1;
-      		for(int i=(pageIndex-1)*singlePageNum;i<informList.size()&&i<(pageIndex)*singlePageNum;i++){
-      			Inform inform = (Inform)informList.get(i);
+				pageNum = userList.size()/singlePageNum+1;
+      		for(int i=(pageIndex-1)*singlePageNum;i<userList.size()&&i<(pageIndex)*singlePageNum;i++){
+      			User user = (User)userList.get(i);
       			%>
       				<tr>
-      					<td><% out.print(inform.getIid()); %></td>
-      					<td><% out.print(inform.getContent()); %></td>
-      					<td><% out.print(inform.getTime()); %></td>
+      					<td><% out.print(user.getUserId()); %></td>
+      					<td><% out.print(user.getUserNickName()); %></td>
+      					<td><% out.print(user.getRegisDate()); %></td>
       					<td>
       						<%
-      							String informType = inform.getType();
-      							if(informType.equals("01")){
-      								out.print("公告"); 
-      							}else if(informType.equals("02")){
-      								out.print("活动"); 
-      							}else if(informType.equals("03")){
-      								out.print("规则"); 
-      							}else if(informType.equals("04")){
-      								out.print("提醒"); 
-      							}else if(informType.equals("05")){
-      								out.print("其他"); 
+      							String userStatus = user.getStatus();
+      							if(userStatus.equals("00")){
+      								out.print("正常使用"); 
+      							}else if(userStatus.equals("01")){
+      								out.print("已被封号"); 
       							}
       						%>
       					
       					</td>
       					<td>
-      					<input type='button' value='删除' onclick="formSubmit('delete<%out.print(i+"");%>')">
-      					<form id="delete<%out.print(i+"");%>" action="addComment.jsp">
-      						<input type="hidden" name ="informId" value="<%out.print(inform.getIid());%>">
-      					</form>
+      					<%
+      							if(userStatus.equals("00")){
+      							%>
+      								<input type='button' value='封号' onclick="formSubmit('delete<%out.print(i+"");%>')">
+      								<form id="delete<%out.print(i+"");%>" action="userManager.jsp">
+      								<input type="hidden" name ="userId" value="<%out.print(user.getUserId());%>">
+      								<input type="hidden" name ="delete" value="yes">
+      								</form>
+      							<%
+      							}else if(userStatus.equals("01")){
+      							%>
+      								<input type='button' value='解封' onclick="formSubmit('recover<%out.print(i+"");%>')">
+      								<form id="recover<%out.print(i+"");%>" action="userManager.jsp">
+      								<input type="hidden" name ="userId" value="<%out.print(user.getUserId());%>">
+      								<input type="hidden" name ="recover" value="yes">
+      								</form>
+      							<%
+      							}
+      					%>
+      					
       				</tr>
       			<%
       		}
@@ -153,10 +177,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			共<%out.print(pageNum); %> 页，
 			<span class="text">当前是第<%out.print(pageIndex); %> 页</span>
 		</div>
-		<form id="pageNext" action="addComment.jsp" method="post">
+		<form id="pageNext" action="userManager.jsp" method="post">
           		<input type="hidden" name="pageIndex" value="<%out.print(pageIndex+1);%>">
      	</form>
-     	<form id="pagepre" action="addComment.jsp" method="post">
+     	<form id="pagepre" action="userManager.jsp" method="post">
           	<input type="hidden" name="pageIndex" value="<%out.print(pageIndex-1);%>">
      	</form>
 		<script language="javascript">
@@ -179,37 +203,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     
     
-    <div style="margin-top:60px;width:1000px;height:100px;margin-left:80px;">
-        <input style="margin-right:50px;margin-top:10px;width:60px;height:30px" type="button" value="新增" onclick="trdadd()">  
-    
-    <div id="fid" style="display : none;margin-top:10px">   
-      	<form id="formid" method="post" action="addComment.jsp">   
-     	<table id=aaid>   
-     	<tr>  
-     		<td> 
-     	 	新增内容 : <input name="content" style="width:300px;height:100px" id="bid" type="text" size="20%"> 
-     	 	</td>   
-           <td>                           
-                                       新增 类型 :   
-       		<select id="eid" name="contentType">   
-          		<option value="01">公告</option>   
-          		<option value="02">规则</option>   
-          		<option value="03">活动</option>   
-          		<option value="04">提醒</option>   
-          		<option value="05">其他</option>   
-      		</select>  
-      		</td>   
-      		<td>
-        	<input style="margin-left: 20px" type="submit" value="保存" onclick="baocun()">   
-        	</td>
-        	<td>
-        	<input style="margin-left: 20px" type="reset" value="重置" onclick="chongzhi()"> <!-- 重置type类型必须为reset--> 
-         	</td>
-         </tr> 
-        </table>     
-    	</form>   
-      </div> 
-      </div>
 	</div>
 	<div style="height:10px;"></div>
 

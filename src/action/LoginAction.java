@@ -50,10 +50,16 @@ public class LoginAction extends Action {
 		UserBiz uBiz =  new UserBiz();
 		String userNickname= uBiz.userLogin(userName, password);
 		if(userNickname!=null){
-			HttpSession session = request.getSession();
-			session.setAttribute("userName", userNickname);
-			session.setAttribute("userId", userName);
-			return mapping.findForward("success");
+			//Ã»ÓÐ±»·âºÅ
+			if(uBiz.isLegal(userName)){
+				HttpSession session = request.getSession();
+				session.setAttribute("userName", userNickname);
+				session.setAttribute("userId", userName);
+				return mapping.findForward("success");
+			}else{
+				request.setAttribute("fenghao", "fenghao");
+				return mapping.findForward("failed");
+			}
 		}else{
 			request.setAttribute("error", "error");
 			return mapping.findForward("failed");

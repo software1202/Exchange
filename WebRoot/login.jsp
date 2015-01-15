@@ -67,6 +67,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<font style="color:red;">用户名或密码错误</font>
 									<%
 								}
+								if(request.getAttribute("fenghao")!=null){
+									%>
+										<font style="color:red;">您已被封号，请联系管理员</font>
+									<%
+								}
 								if(request.getAttribute("unLegal")!=null){
 									%>
 										<font style="color:red;">用户名或密码包含非法字符</font>
