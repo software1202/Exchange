@@ -118,56 +118,7 @@ function clacImgZoomParam( maxWidth, maxHeight, width, height ){
 </script>
 </head>
 <body>
-	<!--n-->
-    <header class="mt-header">
-    <article>
-        <div class="mt-logo">
-            <a title="换享网" href=""  ></a>
-        </div>
-        <nav class="mt-nav">
-            <ul id="J_MtMainNav">
-                <li>
-                    <a href="project.html" >首页</a>
-                    <i class="mt-arrow"></i>
-                </li>
-                <li class="selected">
-                    <a href=""  target="_blank">个人主页</a>
-                    <i class="mt-arrow"></i>
-                </li> 
-				<li>
-                    <a href="" >账户设置</a>
-                    <i class="mt-arrow"></i>
-                </li>
-                <li class="">
-                    <a class="mt-nav-parent" href="" >消息</a>
-                    <i class="mt-arrow"></i>
-                </li>
-            </ul> 
-                <div class="search" id="J_Search" role="search">
-                    <div class="search-panel search-sns-panel-field">
-                        <form target="_blank" action="" name="search" id="J_TSearchForm" class="search-panel-focused">
-                            <div class="search-button">
-                                <button class="btn-search" type="submit">搜 索</button>
-                            </div>
-                            <div class="search-panel-fields">
-                                <label for="q"></label>
-                                <input id="q" name="q" accesskey="s" autofocus="true" autocomplete="off" x-webkit-speech=""
-                                       x-webkit-grammar="builtin:translate">
-                            </div>
-                            <input type="hidden" name="commend" value="all">
-                            <input type="hidden" name="ssid" value="s5-e" autocomplete="off">
-                            <input type="hidden" name="search_type" value="mall" autocomplete="off">
-                            <input type="hidden" name="sourceId" value="tb.index">
-                            <input type="hidden" name="spm" value="a1z02.1.6856637.d4910789">
-                            <!--[if lt IE 9]><s class="search-fix search-fix-panellt"></s><s class="search-fix search-fix-panellb"></s>
-                            <![endif]-->
-                        </form>
-                    </div>
-                </div>
-        </nav>
-    </article>
-	</header>
-	<!-- end vmcommon/mytaobao -->
+	<%@ include file="common/top_main.jsp" %>
 
 <div id="layout-center" style="height:1000px">
     <div class="grid-c2">
@@ -325,102 +276,10 @@ function clacImgZoomParam( maxWidth, maxHeight, width, height ){
 				</div>
 			</div>
 		</div>
-		<section id="J_Col_Sub" class="col-sub">
-            <script type="text/javascript"> ___RecentVisitOn = true;  </script>
-            		<aside class="mt-menu" id="J_MtSideMenu">
-						<div class="mt-menu-tree">
-							<dl class="mt-menu-item"  data-spm-max-idx="20">
-								<dt class="fs14 mt-btn-go-setings" id="MTB_ItemsSetings">我的交换<span class="mt-menu-right-arr"><em></em></span></dt>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="buy.html" >我想换的</a>
-									</dd>
-									<dd class="mt-menu-sub J_MtSideTree fold">
-										<a href="sale.html">想换我的</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="changetalk.html"  >交换协商</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="exchange.html" >正在交换</a>
-									</dd>
-									<dt class="fs14 mt-btn-go-setings" id="MTB_ItemsSetings">我的关注<span class="mt-menu-right-arr"><em></em></span></dt>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="attentionthing.html">关注物品</a>
-									</dd>
-									<dd class="mt-menu-sub J_MtSideTree fold">
-										<a href=""  >关注用户</a>
-									</dd>
-								<dt class="fs14 mt-btn-go-setings" id="MTB_ItemsSetings">物品管理<span class="mt-menu-right-arr"><em></em></span></dt>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="uploadthing.html" >上传物品</a>
-									</dd>
-									<dd class="mt-menu-sub J_MtSideTree fold">
-										<a href="uploadrecord.html"  >上传记录</a>
-									</dd>
-								<dt class="fs14 mt-btn-go-setings" id="MTB_ItemsSetings">我的信息<span class="mt-menu-right-arr"><em></em></span></dt>
-									
-									<dd class="mt-menu-sub J_MtSideTree fold">
-										<a href="gerenxinxi.html"  >个人信息</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="password.html">修改密码</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="renzheng.html">信息认证</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="grademx.html">积分历史</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href=""  >修改收货地址</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href=""  >余额信息</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href=""  >留言信息</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="webimformation.html">站内消息</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="exchange records.html">交换记录</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="complain.html">投诉</a>
-									</dd>
-							</dl>
-						</div>
-					</aside> 
-		</section>
-	</div>
-</div>
-	
-	<!--footer-->
-    <div class="footer">
-        <div class="footer-right">
-            <div class="footer-nav">
-                <a href="#">湖南大学</a>|
-                <a href="#">湖南大学信息科学与工程学院</a>
-            </div>
-            <div class="about-tao">
-                <a href="#">关于我们</a>
-                <a href="#">合作伙伴</a>
-                <a href="#">营销中心</a>
-                <a href="#">相关投诉</a>
-                <a href="#">联系客服</a>
-                <a href="#">联系我们</a>
-                <a href="#">法律声明</a>
-                <span class="gary-text">&copy; 2014 换享网 版权所有</span>
-            </div>
-            <p class="gary-text"><span>湖南大学</span>|<span>信息科学与工程学院</span>|<span>2014软件工程二班 第三组</span></p>
-        </div>
 		
-		<!--换成我们的Logo-->
-        <div class="tao-man">
-            <img src="img/tao-man.png" />
-        </div>
-    </div>
+	<%@ include file="common/left.jsp" %>
+	
+	<%@ include file="common/footer.jsp" %>
 	
 
 

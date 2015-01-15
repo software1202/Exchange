@@ -566,7 +566,7 @@
 .hiden-box{
     position: fixed;
     z-index: 4888;
-    width: 709px;
+    width: 100px;
     height: 472px;
     padding: 10px;
     display: none;

@@ -20,7 +20,7 @@
 									</dd>
 								<dt class="fs14 mt-btn-go-setings" id="MTB_ItemsSetings">物品管理<span class="mt-menu-right-arr"><em></em></span></dt>
 									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="uploadthing.html" >上传物品</a>
+										<a href="uploadGoods.jsp" >上传物品</a>
 									</dd>
 									<dd class="mt-menu-sub J_MtSideTree fold">
 										<a href="uploadrecord.html"  >上传记录</a>

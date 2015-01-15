@@ -113,7 +113,7 @@
             .css({
                 left: ((wW - 1190)/2 + 149),
                 top:  beginH
-            }).animate({width: '729px'}, 300);
+            }).animate({width: '329px'}, 300);
         $('.hiden-box > li').hide();
         $('#hiden-'+num).fadeIn(200);
         beginH = 138;
@@ -128,7 +128,7 @@
             borderRight: '1px solid #fff'
         }).find('h3').css({border: 'none'})
             .end().find('span').css({color: "#f40"});
-        $(this).show().css({width: '729px'});
+        $(this).show().css({width: '329px'});
     }, function(){
         $('.s_'+num).css({
             border: '',

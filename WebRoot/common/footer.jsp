@@ -22,6 +22,6 @@
 		
 		<!--换成我们的Logo-->
         <div class="tao-man">
-        <img src="img/tao-man.png" /> 
+        
         </div>
     </div>

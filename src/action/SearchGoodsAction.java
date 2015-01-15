@@ -23,9 +23,16 @@ public class SearchGoodsAction extends Action{
 			throws Exception {
 		SearchGoodsForm searchGoodsForm = (SearchGoodsForm)form;
 		String keyWord = searchGoodsForm.getKeyWord();
-		keyWord = new String(keyWord.getBytes("ISO-8859-1"),"UTF-8");
-		GoodsBiz goodsBiz = new GoodsBiz();
-		List goodsList = goodsBiz.getGoodsListByKeyWord(keyWord);
+		String type = searchGoodsForm.getType();
+		List goodsList;
+		if(keyWord.equals("")){
+			keyWord = new String(keyWord.getBytes("ISO-8859-1"),"UTF-8");
+			GoodsBiz goodsBiz = new GoodsBiz();
+			goodsList = goodsBiz.getGoodsListByKeyWord(keyWord);
+		}else{
+			GoodsBiz goodsBiz = new GoodsBiz();
+			goodsList = goodsBiz.getGoodsListByType(type);
+		}
 		request.setAttribute("goodsList", goodsList);
 		return mapping.findForward("success");
 	}

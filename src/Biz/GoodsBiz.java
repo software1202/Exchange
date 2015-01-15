@@ -66,6 +66,15 @@ public class GoodsBiz {
 		return goodsList;
 	}
 	
+	public List getGoodsListByType(String type){
+		Session session = HibernateSessionFactory.getSession();
+		String hql = "from Goods as g where g.submenu='"+type+"'"; // 调用 session 的获得数据列表方法，传递 HQL 查询语句 
+		Query query = session.createQuery(hql); 
+		List goodsList = query.list();
+		session.close();
+		return goodsList;
+	}
+	
 	public List getUserAllGoods(String userId){
 		Session session = HibernateSessionFactory.getSession();
 		String hql = "from Goods as g where g.user='"+userId+"'";

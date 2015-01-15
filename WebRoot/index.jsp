@@ -1,3 +1,6 @@
+<%@page import="hibernate.Submenu"%>
+<%@page import="hibernate.Menu"%>
+<%@page import="Biz.MenuBiz"%>
 <%@page import="hibernate.Inform"%>
 <%@page import="Biz.InformBiz"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
@@ -127,562 +130,79 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <!--sidebar-info-->
             <div class="sidebar-info">
                 <ul class="side-li">
-                    <li class="s_1"><h3>服装内衣<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_2"><h3>鞋包配饰<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_3"><h3>运动户外<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_4"><h3>珠宝手表<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_5"><h3>手机数码<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_6"><h3>家电办公<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_7"><h3>护肤彩妆<span class="fa fa-angle-right fa-loc"></span></h3>v</li>
-                    <li class="s_8"><h3>母婴用品<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_9"><h3>家纺居家<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_10"><h3>家具建材<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_11"><h3>美食特产<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_12"><h3>日用百货<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_13"><h3>汽车摩托<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_14"><h3>文化娱乐<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_15"><h3>本地生活<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_16"><h3>虚拟服务<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                	<%
+                		MenuBiz menuBiz = new MenuBiz();
+                		List menuList = menuBiz.getMenuList();
+                		for(int i=0;i<menuList.size();i++){
+                			hibernate.Menu menu = (hibernate.Menu)menuList.get(i);
+                			%>
+                				<li class="s_<%out.print((i+1));%>"><h3><%out.print(menu.getMenuName());%><span class="fa fa-angle-right fa-loc"></span></h3></li>
+                			<%
+                		}
+                	 %>
                 </ul>
                 <!--hidden-li-box-->
-                <ul class="hiden-box">
-                    <li data-hidden="li" id="hiden-1">
+                <ul class="hiden-box" >
+                	<%
+                		for(int i=0;i<menuList.size();i++){
+                			%>
+                	<li data-hidden="li" id="hiden-<%out.print(i);%>">
                         <div class="hidden-title">
-                            <a href="#">淘宝女人</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
-                            <a href="#">最in女装</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
-                            <a href="#">淘宝男人</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
-                            <a href="#">女人搭配</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
+                            
                         </div>
-                        <div class="sub-nav-right">
+                        <div class="">
                             <div class="cell-box">
-                                <h1>印记女装</h1>
                                 <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
+                                	<%
+                                		hibernate.Menu menu = (hibernate.Menu)menuList.get(i);
+                                		List submenuList = menuBiz.getSubMenuByMenuId(menu.getMenuId());
+                                		for(int j=0;j<submenuList.size();j++){
+                                			Submenu submenu = (Submenu)submenuList.get(j);
+                                			%>
+                                				<a style="width:30px;" href="javascript:document.getElementById('searchByType<%out.print(submenu.getSubMenuId());%>').submit();"><%out.print(submenu.getSubMenuName()); %></a><span>|</span>
+                                			<%
+                                		}
+                                		
+                                	 %>
                                 </div>
                             </div>
                         </div>
-                        <div class="sub-nav-left">
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </li>
-                    <li data-hidden="li" id="hiden-2">
-                        <div class="hidden-title">
-                            <a href="#">精品女鞋</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
-                            <a href="#">最in女装</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
-                            <a href="#">淘宝男人</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
-                            <a href="#">女人搭配</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
-                        </div>
-                        <div class="sub-nav-right">
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sub-nav-left">
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                			<%
+                		}
+                	 %>
                     
-                    <li data-hidden="li" id="hiden-16">
-                        <div class="hidden-title">
-                            <a href="#">淘宝女人</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
-                            <a href="#">最in女装</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
-                            <a href="#">淘宝男人</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
-                            <a href="#">女人搭配</a><span class="right-box"><i class="fa fa-angle-right"></i></span>
-                        </div>
-                        <div class="sub-nav-right">
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sub-nav-left">
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                            <div class="cell-box">
-                                <h1>印记女装</h1>
-                                <div class="a-box">
-                                    <a href="#">连衣裙</a><span>|</span>
-                                    <a href="#">裤子</a><span>|</span>
-                                    <a href="#">小西装</a><span>|</span>
-                                    <a href="#">长袖村上</a><span>|</span>
-                                    <a href="#" class="orange">春季外套</a>
-                                    <a href="#">郑志山</a><span>|</span>
-                                    <a href="#">毛衣</a><span>|</span>
-                                    <a href="#">长袖T恤</a><span>|</span>
-                                    <a href="#">唯一</a><span>|</span>
-                                    <a href="#">雪绒钱</a><span>|</span>
-                                    <a href="#">大地亏</a>
-                                    <a href="#">半身全</a><span>|</span>
-                                    <a href="#">风衣</a><span>|</span>
-                                    <a href="#">类似雪纺</a><span>|</span>
-                                    <a href="#">毛衣外套</a><span>|</span>
-                                    <a href="#">棒球服</a>
-                                    <a href="#">牛仔装</a><span>|</span>
-                                    <a href="#">礼服</a><span>|</span>
-                                    <a href="#">婚纱</a><span>|</span>
-                                    <a href="#">大妈</a><span>|</span>
-                                    <a href="#">Zara</a><span>|</span>
-                                    <a href="#">挨个</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    
+                    
                 </ul>
             </div>
         </div>
-    
+    	<%
+    		for(int i=0;i<menuList.size();i++){
+    			hibernate.Menu menu = (hibernate.Menu)menuList.get(i);
+                List submenuList = menuBiz.getSubMenuByMenuId(menu.getMenuId());
+                for(int j=0;j<submenuList.size();j++){
+                    Submenu submenu = (Submenu)submenuList.get(j);
+                    %>
+               
+                        <form style="display:no" id="searchByType<%out.print(submenu.getSubMenuId());%>" action="searchGoods.do" method="get">
+                        	<input type="hidden" name="type"  value="<%out.print(submenu.getSubMenuId());%>"/>
+                        </form>
+                    <%
+               }
+    		}
+    	 %>
 		<!--right-con-->
         <div class="right-con">
             <div class="nav">
-                <a id="spe-a1" href="#">随便看看</a>
+                <a id="spe-a1" href="#"></a>
 				<span class="line-a">|</span>
-                <a id="spe-a2" href="#">最新</a>
+                <a id="spe-a2" href="#"></a>
 				<span class="line-a">|</span>
-                <a id="spe-a3" href="#">最热</a>
+                <a id="spe-a3" href="#"></a>
                 <span class="line-a">|</span>
-                <span class="keep-a" href="#"><a href="#">消费者保障</a></span>
+                <span class="keep-a" href="#"><a href="#"></a></span>
             </div>
             <!--show-box-->
             <div class="show-box">
@@ -835,54 +355,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="help">
         <div class="help-info">
             <h1><img src="img/help4.png"><span class="help-text">消费者保障</span></h1>
-            <a class="help-a" href="#">保障范围</a>
-            <a class="help-a" href="#">退货退款流程</a>
-            <a class="help-a" href="#">服务中心</a>
-            <a class="help-a" href="#">更多特色服务</a>
+            <a class="help-a" target="_blank" href="nomatter.jsp">保障范围</a>
+            <a class="help-a" target="_blank" href="nomatter.jsp">退货退款流程</a>
+            <a class="help-a" target="_blank" href="nomatter.jsp">服务中心</a>
+            <a class="help-a" target="_blank" href="nomatter.jsp">更多特色服务</a>
         </div>
         <div class="help-info">
             <h1><img src="img/help1.png"><span class="help-text">新手上路</span></h1>
-            <a class="help-a" href="#">新手专区</a>
-            <a class="help-a" href="#">换享警示</a>
-            <a class="help-a" href="#">换享安全</a>
-            <a class="help-a margin-r" href="#">24小时在线帮助</a>
+            <a class="help-a" target="_blank" href="nomatter.jsp">新手专区</a>
+            <a class="help-a" target="_blank" href="nomatter.jsp">换享警示</a>
+            <a class="help-a" target="_blank" href="nomatter.jsp">换享安全</a>
+            <a class="help-a margin-r" target="_blank" href="nomatter.jsp">24小时在线帮助</a>
         </div>
         <div class="help-info">
             <h1><img src="img/help2.png"><span class="help-text">交易方式方式</span></h1>
-            <a class="help-a-litter" href="#">线上支付</a>
-            <a class="help-a-litter" href="#">线下支付</a>
+            <a class="help-a-litter" target="_blank" href="nomatter.jsp">线上支付</a>
+            <a class="help-a-litter" target="_blank" href="nomatter.jsp">线下支付</a>
         </div>
         <div class="help-info">
             <h1><img src="img/help3.png"><span class="help-text">换享网特色</span></h1>
-            <a class="help-a" href="#">项目介绍</a>
+            <a class="help-a" target="_blank" href="show.jsp">项目介绍</a>
         </div>
     </div>
 	
-	<!--footer-->
-    <div class="footer">
-        <div class="footer-right">
-            <div class="footer-nav">
-                <a href="#">湖南大学</a>|
-                <a href="#">湖南大学信息科学与工程学院</a>
-            </div>
-            <div class="about-tao">
-                <a href="#">关于我们</a>
-                <a href="#">合作伙伴</a>
-                <a href="#">营销中心</a>
-                <a href="#">相关投诉</a>
-                <a href="#">联系客服</a>
-                <a href="#">联系我们</a>
-                <a href="#">法律声明</a>
-                <span class="gary-text">&copy; 2014 换享网 版权所有</span>
-            </div>
-            <p class="gary-text"><span>湖南大学</span>|<span>信息科学与工程学院</span>|<span>2014软件工程二班 第三组</span></p>
-        </div>
-		
-		<!--换成我们的Logo-->
-        <div class="tao-man">
-            <img src="img/tao-man.png" />
-        </div>
-    </div>
+	<%@ include file="common/footer.jsp" %>
 	
 	<!--backtoTop1-->
     <!--兼容所有现代浏览器同时包括 ie6/7/8/9 （ie6会有一点点抖动）-->
