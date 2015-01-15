@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					<!--标准登录框-->
 					<div id="J_Static" class="static">
-						<form id="J_StaticForm" action="<% out.print(path); %>/login.do" method="post">
+						<form id="J_StaticForm" action="adminLogin.do" method="post">
 							<input type="hidden" name="ua" id="UA_InputId">
 							<div class="field ph-hide username-field">
 								<label for="TPL_username_1" class="iconfont">󰄭</label>
@@ -65,6 +65,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								if(request.getAttribute("error")!=null){
 									%>
 										<font style="color:red;">用户名或密码错误</font>
+									<%
+								}
+								if(request.getAttribute("unLegal")!=null){
+									%>
+										<font style="color:red;">用户名或密码包含非法字符</font>
+									<%
+								}
+								if(request.getAttribute("null")!=null){
+									%>
+										<font style="color:red;">用户名或密码为空</font>
 									<%
 								}
 				 			%>

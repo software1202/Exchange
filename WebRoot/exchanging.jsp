@@ -136,6 +136,7 @@
 							
 							//BgoodsName = new String(BgoodsName.getBytes("latin1"),"UTF-8");
 							
+							String exstatus = booking.getExStatus();
 							Date AapplyTime = booking.getAtime();
 							
 							
@@ -193,16 +194,58 @@
  
 						<td class="trade-status" rowspan="1">
 							<span>
-								等待双方确认收货！
+								<%
+									if(AuserStatus.equals("06")&&BuserStatus.equals("06")){
+									if(exstatus.equals("00")){
+										out.print("等待双方确认收货");
+									}else if(exstatus.equals("02")){
+										if(userId.equals(Auser.getUserId())){
+											out.print("等待对方确认交易信息");
+										}else{
+											out.print("等待我方确认交易信息");
+										}
+									}else if(exstatus.equals("01")){
+										if(userId.equals(Auser.getUserId())){
+											out.print("等待我方确认交易信息");
+										}else{
+											out.print("等待对方确认交易信息");
+										}
+									}
+								}
+								 %>
 							</span>
 						</td>
  
 						<td class="trade-operate" rowspan=" 1 ">
 							<span class="skin-white">
-								<a href="javascript:formSubmit('startExchange<%out.print(i+"");%>')" class="J_Rebuy">取消交易</a>
+								<%
+									if(AuserStatus.equals("06")&&BuserStatus.equals("06")){
+									if(exstatus.equals("00")){
+										%>
+										<a href="javascript:formSubmit('startExchange<%out.print(i+"");%>')" class="J_Rebuy">确认交易</a>
+										<%
+									}else if(exstatus.equals("02")){
+										if(userId.equals(Auser.getUserId())){
+											out.print("");
+										}else{
+											%>
+										<a href="javascript:formSubmit('startExchange<%out.print(i+"");%>')" class="J_Rebuy">确认交易</a>
+										<%
+										}
+									}else if(exstatus.equals("01")){
+										if(userId.equals(Auser.getUserId())){
+											%>
+										<a href="javascript:formSubmit('startExchange<%out.print(i+"");%>')" class="J_Rebuy">确认交易</a>
+										<%
+										}else{
+											out.print("");
+										}
+									}
+								}
+								 %>
 							</span>
 							<form id="startExchange<%out.print(i+"");%>" action="startExchange.do" method="post">
-                				<input type="hidden" name="state" value="20">
+                				<input type="hidden" name="state" value="50">
                 				<input type="hidden" name="tradeId" value="<%out.print(tradeId);%>">
                 			</form>
 						</td>

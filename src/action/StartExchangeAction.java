@@ -135,6 +135,15 @@ public class StartExchangeAction extends Action{
 			return mapping.findForward("wantChange");
 		}else if(state.equals("50")){
 			//用户确认收货
+			TradeBiz tradeBiz = new TradeBiz();
+			String result = tradeBiz.completeTrade(tradeId, userId);
+			if(result.equals("101")||result.equals("102")){
+				return mapping.findForward("exchanging");
+			}else if(result.equals("103")){
+				return mapping.findForward("exchanging");
+			}else{
+				return mapping.findForward("failed");
+			}
 		}
 		
 		

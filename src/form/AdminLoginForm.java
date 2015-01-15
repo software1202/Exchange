@@ -1,11 +1,15 @@
 package form;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 /** 
  * MyEclipse Struts
  * Creation date: 06-10-2008
@@ -61,13 +65,26 @@ public class AdminLoginForm extends ActionForm {
 	public ActionErrors validate(ActionMapping mapping,
             HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
-       if (this.password.equals("")) {
-            errors.add("password", new ActionError("error.password"));
+       if (this.password.equals("")||this.userName.equals("")) {
+    	   request.setAttribute("null", "12");
+           errors.add("unLegal",new ActionMessage("unLegalError"));
+           return errors;
         }
-       if (this.userName.equals("")) {
-           errors.add("userName", new ActionError("error.userName"));
+       if(!isLegal(userName,password)){
+    	   request.setAttribute("unLegal", "12");
+           errors.add("unLegal",new ActionMessage("unLegalError"));
+           return errors;
        }
        return errors;
     }
+	private boolean isLegal(String tUserName,String tPassword){
+		//过滤用户名，密码
+		Pattern p = Pattern.compile("([~!@#$%^&\\*()_+\\-=;':\",\\./<>?|\\s]|drop|delete|truncate|and|or)"); 
+		Matcher m = p.matcher(tUserName);   
+		if(m.find())return false;
+		m = p.matcher(tPassword);   
+		if(m.find())return false;
+		return true;
+	}
 	
 }

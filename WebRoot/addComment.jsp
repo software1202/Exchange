@@ -63,6 +63,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 	<%
+	if(session.getAttribute("adminName")==null){
+		%>
+			<script type="text/javascript">
+				alert("未登录");
+			</script>
+			<jsp:forward page="adminLogin.jsp"/>
+		<%
+	}
 	InformBiz informBiz = new InformBiz();
 		if(request.getParameter("informId")!=null){
 			String informId = request.getParameter("informId");
@@ -108,7 +116,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div style="margin-left:100px">
         <img src="img/logo250.png">
     </div>
-	<div style="margin-left:200px;width:1000px;"> 
+    <div id="layout-center">
+    <div class="grid-c2">
+        <div id="J_Col_Main" class="col-main">
+    
+	<div style="margin-left:100px;width:1000px;"> 
 		<center>   
 		<table id="tableid" border="1" cellpadding="0" cellspacing="0" width="100%" >   
 		<thead>   
@@ -192,6 +204,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<div style="height:10px;"></div>
 
+	</div>
+	<%@ include file="common/adminLeft.jsp" %>
+
 	<%@ include file="common/footer.jsp" %>
+	
+	</div>
+	</div>
 </body>
 </html>

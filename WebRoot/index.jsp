@@ -1,3 +1,5 @@
+<%@page import="hibernate.Inform"%>
+<%@page import="Biz.InformBiz"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -707,48 +709,121 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<a style="float: left;padding-left:50px" href="#"><img src="img/indexBox3.jpg"></a>
 				<a style="float: left;padding-left:50px" href="#"><img src="img/indexBox4.jpg"></a>
             </div>
+            <%
+            	InformBiz informBiz = new InformBiz();
+            	List informList1 = informBiz.getInformBytype("01");
+            	List informList2 = informBiz.getInformBytype("02");
+            	List informList3 = informBiz.getInformBytype("03");
+            	List informList4 = informBiz.getInformBytype("04");
+            	List informList5 = informBiz.getInformBytype("05");
+             %>
             <!--right-sidbar-->
             <div class="right-sidebar">
                 <div class="info-box">
                     <ul class="tab-nav">
                         <li id="li-1" class="li-nav li-nav-hover li-border">公告</li>
                         <li id="li-2" class="li-nav">规则</li>
-                        <li id="li-3" class="li-nav">论坛</li>
-                        <li id="li-4" class="li-nav">安全</li>
-                        <li style="border-right: none" id="li-5" class="li-nav">公益</li>
+                        <li id="li-3" class="li-nav">活动</li>
+                        <li id="li-4" class="li-nav">提醒</li>
+                        <li style="border-right: none" id="li-5" class="li-nav">其它</li>
                     </ul>
                     <div id="box-1" style="display: block" class="hiddenBox">
-
+					<!-- 
                         <a href="#">淘宝2014:开放多样性</a>
                         <a href="#">舌尖中国二季 天猫首尝</a>
                         <a href="#">阿里通信自建计费系统</a>
                         <a href="#">来往首届419宇宙节</a>
+                    -->
+                    	<%
+                    		for(int i=0;i<informList1.size()&&i<4;i++){
+                    			Inform inform = (Inform)informList1.get(i);
+                    			Date informDate = inform.getTime();
+                    			%>
+                    				<div style="margin-top:10px;">
+                    					<div>
+                    					<span><%out.print(inform.getContent()); %></span>
+                    					</div>	
+                    					<div style="margin-top:10px;margin-left:200px">
+                    					<span><%out.print((informDate.getYear()+1900)+"-"+(informDate.getMonth()+1)+"-"+informDate.getDay()); %></span>
+                    					</div>
+                    				</div>
+                    			<%
+                    		}
+                    	 %>
                     </div>
                     <div id="box-2" class="hiddenBox">
 
-                        <a href="#">[重要] 淘点点规范</a>
-                        <a href="#">[重要] 虚假交易新规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                        <a href="#">[重要] 新增认证规则</a>
-                        <a href="#">[重要] 购买刀具实名</a>
+                        <%
+                    		for(int i=0;i<informList2.size()&&i<4;i++){
+                    			Inform inform = (Inform)informList2.get(i);
+                    			Date informDate = inform.getTime();
+                    			%>
+                    				<div style="margin-top:10px;">
+                    					<div>
+                    					<span><%out.print(inform.getContent()); %></span>
+                    					</div>	
+                    					<div style="margin-top:10px;margin-left:200px">
+                    					<span><%out.print((informDate.getYear()+1900)+"-"+(informDate.getMonth()+1)+"-"+informDate.getDay()); %></span>
+                    					</div>
+                    				</div>
+                    			<%
+                    		}
+                    	 %>
                     </div>
                     <div id="box-3" class="hiddenBox">
-                        <a href="#">[优化] 称谓滥用将整改</a>
-                        <a href="#">[热点] 如何赢取新商机</a>
-                        <a href="#">[话题] 同城交易避处罚</a>
-                        <a href="#">[聚焦] 新消保法全解析</a>
+                        <%
+                    		for(int i=0;i<informList3.size()&&i<4;i++){
+                    			Inform inform = (Inform)informList3.get(i);
+                    			Date informDate = inform.getTime();
+                    			%>
+                    				<div style="margin-top:10px;">
+                    					<div>
+                    					<span><%out.print(inform.getContent()); %></span>
+                    					</div>	
+                    					<div style="margin-top:10px;margin-left:200px">
+                    					<span><%out.print((informDate.getYear()+1900)+"-"+(informDate.getMonth()+1)+"-"+informDate.getDay()); %></span>
+                    					</div>
+                    				</div>
+                    			<%
+                    		}
+                    	 %>
                     </div>
                     <div id="box-4" class="hiddenBox">
 
-                        <a href="#">个人重要信息要管牢！</a>
-                        <a href="#">卖家防范红包欺诈提醒</a>
-                        <a href="#">更换收货地址的陷阱！</a>
-                        <a href="#">注意骗子的技术升级了</a>
+                        <%
+                    		for(int i=0;i<informList4.size()&&i<4;i++){
+                    			Inform inform = (Inform)informList4.get(i);
+                    			Date informDate = inform.getTime();
+                    			%>
+                    				<div style="margin-top:10px;">
+                    					<div>
+                    					<span><%out.print(inform.getContent()); %></span>
+                    					</div>	
+                    					<div style="margin-top:10px;margin-left:200px">
+                    					<span><%out.print((informDate.getYear()+1900)+"-"+(informDate.getMonth()+1)+"-"+informDate.getDay()); %></span>
+                    					</div>
+                    				</div>
+                    			<%
+                    		}
+                    	 %>
                     </div>
                     <div id="box-5" class="hiddenBox">
-                        <a href="#">[优化] 称谓滥用将整改</a>
-                        <a href="#">[热点] 如何赢取新商机</a>
-                        <a href="#">[话题] 同城交易避处罚</a>
-                        <a href="#">[聚焦] 新消保法全解析</a>
+                        <%
+                    		for(int i=0;i<informList5.size()&&i<4;i++){
+                    			Inform inform = (Inform)informList5.get(i);
+                    			Date informDate = inform.getTime();
+                    			%>
+                    				<div style="margin-top:10px;">
+                    					<div>
+                    					<span><%out.print(inform.getContent()); %></span>
+                    					</div>	
+                    					<div style="margin-top:10px;margin-left:200px">
+                    					<span><%out.print((informDate.getYear()+1900)+"-"+(informDate.getMonth()+1)+"-"+informDate.getDay()); %></span>
+                    					</div>
+                    				</div>
+                    			<%
+                    		}
+                    	 %>
                     </div>
                 </div>
             </div>

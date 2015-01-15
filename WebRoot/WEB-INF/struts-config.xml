@@ -5,6 +5,7 @@
   <data-sources />
   <form-beans>
   	<form-bean name="loginForm" type="form.LoginForm" />
+  	<form-bean name="adminLoginForm" type="form.AdminLoginForm" />
   	<form-bean name="uploadGoodsForm" type="form.UploadGoodsForm" />
   	<form-bean name="wantChangeForm" type="form.WantChangeForm" />
   	<form-bean name="startExchangeForm" type="form.StartExchangeForm" />
@@ -24,6 +25,15 @@
       type="action.LoginAction">
       <forward name="success" path="/index.jsp" />
       <forward name="failed" path="/login.jsp" />
+    </action>
+    <action
+      attribute="adminLoginForm"
+      input="/adminLogin.jsp"
+      name="adminLoginForm"
+      path="/adminLogin"
+      type="action.AdminLoginAction">
+      <forward name="success" path="/addComment.jsp" />
+      <forward name="failed" path="/adminLogin.jsp" />
     </action>
     <action
       attribute="uploadGoodsForm"
@@ -60,6 +70,7 @@
       <forward name="goodsDetail" path="/Goodsdetail.jsp" />
       <forward name="showGoods" path="/showGoods.jsp" />
       <forward name="changeTalk" path="/changetalk.jsp" />
+      <forward name="exchanging" path="/exchanging.jsp" />
     </action>
     <action
       attribute="searchGoodsForm"

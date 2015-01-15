@@ -22,6 +22,11 @@ public class InformBiz {
 		return query.list();
 	}
 	
+	public List getInformBytype(String type){
+		Session session = HibernateSessionFactory.getSession();
+		Query query = session.createQuery("from Inform where type='"+type+"'");
+		return query.list();
+	}
 	
 	public boolean addInform(String content,String contentType){
 		try {

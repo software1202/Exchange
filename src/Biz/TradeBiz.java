@@ -243,4 +243,42 @@ public class TradeBiz {
 		}
 	}
 	
+	//用户确认交换
+		public String completeTrade(String tradeId,String userId){
+			try {
+				Booking booking = (new BookingDAO()).findById(tradeId);
+				String AuserId = booking.getUserByAuserId().getUserId();
+				String BuserId = booking.getUserByBuserId().getUserId();
+				if(AuserId.equals(userId)&&!booking.getExStatus().equals("01")){
+					Session session = HibernateSessionFactory.getSession();
+					session.beginTransaction();  
+					Query query = session.createQuery("update Booking booking set booking.exStatus = '02' where booking.bookingId='"+tradeId+"'");  
+					query.executeUpdate();  
+					session.getTransaction().commit(); 
+					session.close();
+					return "101";
+				}else if(BuserId.equals(userId)&&!booking.getExStatus().equals("02")){
+					Session session = HibernateSessionFactory.getSession();
+					session.beginTransaction();  
+					Query query = session.createQuery("update Booking booking set booking.exStatus = '01' where booking.bookingId='"+tradeId+"'");  
+					query.executeUpdate();  
+					session.getTransaction().commit(); 
+					session.close();
+					return "102";
+				}else{
+					Session session = HibernateSessionFactory.getSession();
+					session.beginTransaction();  
+					Query query = session.createQuery("update Booking b set b.bstatus = '07',b.astatus = '07',b.exStatus='00' where b.bookingId='"+tradeId+"'");  
+					query.executeUpdate();  
+					session.getTransaction().commit(); 
+					session.close();
+					return "103";
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "104";
+			}
+		}
+	
 }
