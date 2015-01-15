@@ -27,6 +27,7 @@ public class GoodsDAO extends BaseHibernateDAO {
 	public static final String NEW_DEGREE = "newDegree";
 	public static final String DESCRIBE = "describe";
 	public static final String IMAGE = "image";
+	public static final String STATUS = "status";
 
 	public void save(Goods transientInstance) {
 		log.debug("saving Goods instance");
@@ -108,6 +109,10 @@ public class GoodsDAO extends BaseHibernateDAO {
 
 	public List findByImage(Object image) {
 		return findByProperty(IMAGE, image);
+	}
+
+	public List findByStatus(Object status) {
+		return findByProperty(STATUS, status);
 	}
 
 	public List findAll() {

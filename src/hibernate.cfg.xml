@@ -36,7 +36,6 @@
 		<mapping resource="hibernate/Indeitem.hbm.xml" />
 		<mapping resource="hibernate/Goodscomplain.hbm.xml" />
 		<mapping resource="hibernate/Inform.hbm.xml" />
-
 	</session-factory>
 
 </hibernate-configuration>

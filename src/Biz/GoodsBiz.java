@@ -33,6 +33,7 @@ public class GoodsBiz {
 		//Query q = session.createQuery(sql);
 		//q.executeUpdate();
 		session.beginTransaction().commit();
+		session.close();
 		return true;
 	}
 	public Goods getGoods(String goodsId){
@@ -84,6 +85,21 @@ public class GoodsBiz {
 		return goodsList;
 	}
 	
-	
+	public boolean deleteGoodsById(String goodsId){
+		try {
+			Session session = HibernateSessionFactory.getSession();
+			String hql = "from Goods where goodsId='"+goodsId+"'";
+			Query query = session.createQuery(hql); 
+			Goods goods = (Goods) query.list().get(0);
+			session.beginTransaction();
+			session.delete(goods);
+			session.beginTransaction().commit();
+			session.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	 
 }

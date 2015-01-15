@@ -120,7 +120,7 @@ public class TradeBiz {
 			}
 			
 			Booking booking = (new BookingDAO()).findById(tradeId);
-			
+			Goods Bgoods = booking.getGoodsByBgoods();
 			
 			//不能换享自己的物品
 			System.out.println(booking);
@@ -133,6 +133,8 @@ public class TradeBiz {
 			query.executeUpdate();  
 			session.getTransaction().commit(); 
 			session.close();
+			setGoodsStatus(Agoods.getGoodsId(), "01");
+			setGoodsStatus(Bgoods.getGoodsId(), "01");
 			//进入正在协商状态
 			return "103";
 		} catch (Exception e) {
@@ -231,7 +233,7 @@ public class TradeBiz {
 				Session session = HibernateSessionFactory.getSession();
 				session.beginTransaction();  
 				Query query = session.createQuery("update Booking b set b.bstatus = '06',b.astatus = '06',b.exStatus='00' where b.bookingId='"+tradeId+"'");  
-				query.executeUpdate();  
+				query.executeUpdate();
 				session.getTransaction().commit(); 
 				session.close();
 				return "103";
@@ -249,6 +251,8 @@ public class TradeBiz {
 				Booking booking = (new BookingDAO()).findById(tradeId);
 				String AuserId = booking.getUserByAuserId().getUserId();
 				String BuserId = booking.getUserByBuserId().getUserId();
+				String AgoodsId = booking.getGoodsByAgoods().getGoodsId();
+				String BgoodsId = booking.getGoodsByBgoods().getGoodsId();
 				if(AuserId.equals(userId)&&!booking.getExStatus().equals("01")){
 					Session session = HibernateSessionFactory.getSession();
 					session.beginTransaction();  
@@ -272,6 +276,8 @@ public class TradeBiz {
 					query.executeUpdate();  
 					session.getTransaction().commit(); 
 					session.close();
+					setGoodsStatus(AgoodsId, "02");
+					setGoodsStatus(BgoodsId, "02");
 					return "103";
 				}
 				
@@ -280,5 +286,12 @@ public class TradeBiz {
 				return "104";
 			}
 		}
-	
+	public void setGoodsStatus(String goodsId,String status){
+		Session session = HibernateSessionFactory.getSession();
+		session.beginTransaction();  
+		Query query = session.createQuery("update Goods g set g.status = '"+status+"' where g.goodsId='"+goodsId+"'");  
+		query.executeUpdate();  
+		session.getTransaction().commit(); 
+		session.close();
+	}
 }

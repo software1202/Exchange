@@ -1,3 +1,4 @@
+<%@page import="Biz.UserBiz"%>
 <%@page import="Biz.InformBiz"%>
 <%@ page language="java" pageEncoding="UTF-8" import = "java.util.*,hibernate.*,javax.servlet.http.HttpServletRequest;"%>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean" %>
@@ -23,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="css/global-min.css" type="text/css">
     <link rel="stylesheet" href="css/base.css" type="text/css" />
     
-    <title>添加公告</title>
+    <title>用户管理</title>
     	
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -38,57 +39,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		}
     	}
     </script>
-    <script type="text/javascript">   
-          // 新增   
-      function trdadd(){   
-            //flag=false;   
-      		document.getElementById("fid").style.display="block"; //控制显示   
-      		//chongzhi();   
-         	//document.getElementById("aid").disabled=false; //重新启用   
-      }   
-        
-      //保存   
-      function baocun(){   
-            formSubmit('formid'); 
-      }   
-      //重置   
-      function chongzhi(){   
-       document.getElementById("formid").reset();   
-      }   
-        
-
-      </script>
-      
-    
  </head>
 
 <body>
 	<%
-	if(session.getAttribute("adminName")==null){
-		%>
-			<script type="text/javascript">
-				alert("未登录");
-			</script>
-			<jsp:forward page="adminLogin.jsp"/>
-		<%
-	}
-	InformBiz informBiz = new InformBiz();
-		if(request.getParameter("informId")!=null){
-			String informId = request.getParameter("informId");
-			if(informBiz.deleteInform(informId)){
-				%>
-					<script>
-						alert("删除成功");
-					</script>
-				<%
-			}else{
-				%>
-					<script>
-						alert("删除失败");
-					</script>
-				<%
-			}
+		if(session.getAttribute("adminName")==null){
+			%>
+				<script type="text/javascript">
+					alert("未登录");
+				</script>
+				<jsp:forward page="adminLogin.jsp"/>
+			<%
 		}
+		UserBiz userBiz = new UserBiz();
+
 		if(request.getParameter("content")!=null){
 			String content = (String)request.getParameter("content");
 			content = new String(content.getBytes("iso-8859-1"),"UTF-8");
@@ -132,8 +96,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<table id="tableid" class="show-rate-table" >   
 		<thead>   
 		<tr>   
-            <td style="width:10%">编号</td>   
-           <td style="width:50%">内容</td>   
+            <td style="width:10%">用户账号</td>   
+           <td style="width:10%">用户昵称</td>   
            <td style="width:15%">时间</td>   
            <td style="width:15%">类型</td>  
            <td align="center" width = "10%">操作</td>    

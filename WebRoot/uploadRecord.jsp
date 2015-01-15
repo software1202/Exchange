@@ -13,7 +13,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>站内消息</title>
+    <title>上传记录</title>
     <link rel="stylesheet" href="css/gradely.css" />
     <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="css/font-awesome.min.css"/>
@@ -38,6 +38,25 @@
 	<%@ include file="common/top_main.jsp" %>
 
 	
+	<%
+		GoodsBiz goodsBiz = new GoodsBiz();
+		if(request.getParameter("goodsId")!=null){
+			String goodsId = request.getParameter("goodsId");
+			if(goodsBiz.deleteGoodsById(goodsId)){
+				%>
+					<script>
+						alert("删除成功");
+					</script>
+				<%
+			}else{
+				%>
+					<script>
+						alert("删除失败");
+					</script>
+				<%
+			}
+		}
+	 %>
 	
 <div id="layout-center">
     <div class="grid-c2">
@@ -48,7 +67,7 @@
 					<div class="mt-ml-shim"></div>
 					<div id="wunai">
 						<div id="main-content">
-	<font size=5><b>站内消息</b></font>
+	<font size=5><b>上传记录</b></font>
 	<div style="margin-top:60px;width:1000px;"> 
 	
 		<center> 
@@ -56,42 +75,50 @@
 		<table id="tableid" class="show-rate-table" >   
 		<thead>   
 		<tr>   
-            <td style="width:15%">编号</td>   
-           <td style="width:55%">内容</td>   
-           <td style="width:15%">时间</td>   
-           <td style="width:15%">类型</td>     
+            <td style="width:10%">ID</td>   
+           <td style="width:20%">照片</td>   
+           <td style="width:20%">名称</td>   
+           <td style="width:20%">状态</td> 
+           <td style="width:25%">操作</td>    
       	</tr> 
       	<%
-      		singlePageNum =6;
-      		InformBiz informBiz = new InformBiz();
-      		List informList = informBiz.getInformList();
-			if(informList.size()%singlePageNum==0)
-				pageNum = informList.size()/singlePageNum;
+      		singlePageNum =3;
+      		List goodsList = goodsBiz.getUserAllGoods(userId);
+			if(goodsList.size()%singlePageNum==0)
+				pageNum = goodsList.size()/singlePageNum;
 			else
-				pageNum = informList.size()/singlePageNum+1;
-      		for(int i=(pageIndex-1)*singlePageNum;i<informList.size()&&i<(pageIndex)*singlePageNum;i++){
-      			Inform inform = (Inform)informList.get(i);
+				pageNum = goodsList.size()/singlePageNum+1;
+      		for(int i=(pageIndex-1)*singlePageNum;i<goodsList.size()&&i<(pageIndex)*singlePageNum;i++){
+      			Goods goods = (Goods)goodsList.get(i);
       			%>
       				<tr>
-      					<td><% out.print(inform.getIid()); %></td>
-      					<td><% out.print(inform.getContent()); %></td>
-      					<td><% out.print(inform.getTime()); %></td>
+      					<td><% out.print(goods.getGoodsId()); %></td>
+      					<td><img src="<% out.print(goods.getImage()); %>"></td>
+      					<td><% out.print(goods.getGoodsName()); %></td>
       					<td>
       						<%
-      							String informType = inform.getType();
-      							if(informType.equals("01")){
-      								out.print("公告"); 
-      							}else if(informType.equals("02")){
-      								out.print("活动"); 
-      							}else if(informType.equals("03")){
-      								out.print("规则"); 
-      							}else if(informType.equals("04")){
-      								out.print("提醒"); 
-      							}else if(informType.equals("05")){
-      								out.print("其他"); 
+      							String status = goods.getStatus();
+      							if(status.equals("00")){
+      								out.print("已上传");
+      							}else if(status.equals("01")){
+      								out.print("正在交易");
+      							}else if(status.equals("01")){
+      								out.print("已交易");
       							}
       						%>
       					
+      					</td>
+      					<td>
+      					  <%
+      						if(status.equals("00")){
+      						%>
+      							<a href="javascript:formSubmit('delete<%out.print(i+"");%>')" class="J_Rebuy">删除物品</a>
+      							<form id="delete<%out.print(i+"");%>" action="uploadRecord.jsp">
+      								<input type="hidden" name ="goodsId" value="<%out.print(goods.getGoodsId());%>">
+      							</form>
+      						<%	
+      						}
+      					  %>
       					</td>
       				</tr>
       			<%
@@ -108,10 +135,10 @@
 			共<%out.print(pageNum); %> 页，
 			<span class="text">当前是第<%out.print(pageIndex); %> 页</span>
 		</div>
-		<form id="pageNext" action="webInformation.jsp" method="post">
+		<form id="pageNext" action="uploadRecord.jsp" method="post">
           		<input type="hidden" name="pageIndex" value="<%out.print(pageIndex+1);%>">
      	</form>
-     	<form id="pagepre" action="webInformation.jsp" method="post">
+     	<form id="pagepre" action=""uploadRecord.jsp"" method="post">
           	<input type="hidden" name="pageIndex" value="<%out.print(pageIndex-1);%>">
      	</form>
 		<script language="javascript">

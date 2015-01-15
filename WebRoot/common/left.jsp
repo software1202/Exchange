@@ -23,7 +23,7 @@
 										<a href="uploadGoods.jsp" >上传物品</a>
 									</dd>
 									<dd class="mt-menu-sub J_MtSideTree fold">
-										<a href="uploadrecord.html"  >上传记录</a>
+										<a href="uploadRecord.jsp"  >上传记录</a>
 									</dd>
 								<dt class="fs14 mt-btn-go-setings" id="MTB_ItemsSetings">我的信息<span class="mt-menu-right-arr"><em></em></span></dt>
 									
@@ -31,10 +31,10 @@
 										<a href="gerenxinxi.html"  >个人信息</a>
 									</dd>
 									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="password.html">修改密码</a>
+										<a href="exchange records.html">交换记录</a>
 									</dd>
 									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="renzheng.html">信息认证</a>
+										<a href="password.html">修改密码</a>
 									</dd>
 									<dd class="mt-menu-sub unfold fold J_MtSideTree">
 										<a href="grademx.html">积分历史</a>
@@ -43,16 +43,7 @@
 										<a href=""  >修改收货地址</a>
 									</dd>
 									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href=""  >余额信息</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href=""  >留言信息</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="webimformation.html">站内消息</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="exchange records.html">交换记录</a>
+										<a href="webimformation.jsp">站内消息</a>
 									</dd>
 									<dd class="mt-menu-sub unfold fold J_MtSideTree">
 										<a href="complain.html">投诉</a>

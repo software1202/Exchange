@@ -25,6 +25,7 @@ public abstract class AbstractUser implements java.io.Serializable {
 	private Date userBirthday;
 	private String phoneNumber;
 	private String idNum;
+	private String status;
 	private Set chattingsForChatTo = new HashSet(0);
 	private Set relationshipsForOthers = new HashSet(0);
 	private Set goodscomplains = new HashSet(0);
@@ -60,11 +61,12 @@ public abstract class AbstractUser implements java.io.Serializable {
 	public AbstractUser(String userId, District district, String userNickName,
 			String userPassword, Integer integration, Date regisDate,
 			String address, String userName, String userSex, Date userBirthday,
-			String phoneNumber, String idNum, Set chattingsForChatTo,
-			Set relationshipsForOthers, Set goodscomplains,
-			Set bookingsForAuserId, Set indeitems, Set chattingsForChatFrom,
-			Set relationshipsForMe, Set usercomplainsForComedId,
-			Set bookingsForBuserId, Set usercomplainsForComId, Set goodses) {
+			String phoneNumber, String idNum, String status,
+			Set chattingsForChatTo, Set relationshipsForOthers,
+			Set goodscomplains, Set bookingsForAuserId, Set indeitems,
+			Set chattingsForChatFrom, Set relationshipsForMe,
+			Set usercomplainsForComedId, Set bookingsForBuserId,
+			Set usercomplainsForComId, Set goodses) {
 		this.userId = userId;
 		this.district = district;
 		this.userNickName = userNickName;
@@ -77,6 +79,7 @@ public abstract class AbstractUser implements java.io.Serializable {
 		this.userBirthday = userBirthday;
 		this.phoneNumber = phoneNumber;
 		this.idNum = idNum;
+		this.status = status;
 		this.chattingsForChatTo = chattingsForChatTo;
 		this.relationshipsForOthers = relationshipsForOthers;
 		this.goodscomplains = goodscomplains;
@@ -186,6 +189,14 @@ public abstract class AbstractUser implements java.io.Serializable {
 
 	public void setIdNum(String idNum) {
 		this.idNum = idNum;
+	}
+
+	public String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Set getChattingsForChatTo() {

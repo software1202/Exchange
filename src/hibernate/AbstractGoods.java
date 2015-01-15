@@ -20,6 +20,7 @@ public abstract class AbstractGoods implements java.io.Serializable {
 	private String newDegree;
 	private String describe;
 	private String image;
+	private String status;
 	private Set goodscomplains = new HashSet(0);
 	private Set bookingsForBgoods = new HashSet(0);
 	private Set bookingsForAgoods = new HashSet(0);
@@ -42,8 +43,8 @@ public abstract class AbstractGoods implements java.io.Serializable {
 	/** full constructor */
 	public AbstractGoods(String goodsId, User user, Submenu submenu,
 			String goodsName, String brand, String newDegree, String describe,
-			String image, Set goodscomplains, Set bookingsForBgoods,
-			Set bookingsForAgoods) {
+			String image, String status, Set goodscomplains,
+			Set bookingsForBgoods, Set bookingsForAgoods) {
 		this.goodsId = goodsId;
 		this.user = user;
 		this.submenu = submenu;
@@ -52,6 +53,7 @@ public abstract class AbstractGoods implements java.io.Serializable {
 		this.newDegree = newDegree;
 		this.describe = describe;
 		this.image = image;
+		this.status = status;
 		this.goodscomplains = goodscomplains;
 		this.bookingsForBgoods = bookingsForBgoods;
 		this.bookingsForAgoods = bookingsForAgoods;
@@ -121,6 +123,14 @@ public abstract class AbstractGoods implements java.io.Serializable {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Set getGoodscomplains() {

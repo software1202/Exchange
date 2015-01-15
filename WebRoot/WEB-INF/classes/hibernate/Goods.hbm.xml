@@ -31,6 +31,9 @@
         <property name="image" type="string">
             <column name="image" length="50" />
         </property>
+        <property name="status" type="string">
+            <column name="status" length="5" />
+        </property>
         <set name="goodscomplains" inverse="true">
             <key>
                 <column name="ComedGoodsId" length="10" not-null="true" />

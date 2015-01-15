@@ -21,9 +21,11 @@ public class Goods extends AbstractGoods implements java.io.Serializable {
 	/** full constructor */
 	public Goods(String goodsId, User user, Submenu submenu, String goodsName,
 			String brand, String newDegree, String describe, String image,
-			Set goodscomplains, Set bookingsForBgoods, Set bookingsForAgoods) {
+			String status, Set goodscomplains, Set bookingsForBgoods,
+			Set bookingsForAgoods) {
 		super(goodsId, user, submenu, goodsName, brand, newDegree, describe,
-				image, goodscomplains, bookingsForBgoods, bookingsForAgoods);
+				image, status, goodscomplains, bookingsForBgoods,
+				bookingsForAgoods);
 	}
 
 }

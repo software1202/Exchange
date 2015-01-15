@@ -31,6 +31,7 @@ public class UserDAO extends BaseHibernateDAO {
 	public static final String USER_SEX = "userSex";
 	public static final String PHONE_NUMBER = "phoneNumber";
 	public static final String ID_NUM = "idNum";
+	public static final String STATUS = "status";
 
 	public void save(User transientInstance) {
 		log.debug("saving User instance");
@@ -124,6 +125,10 @@ public class UserDAO extends BaseHibernateDAO {
 
 	public List findByIdNum(Object idNum) {
 		return findByProperty(ID_NUM, idNum);
+	}
+
+	public List findByStatus(Object status) {
+		return findByProperty(STATUS, status);
 	}
 
 	public List findAll() {

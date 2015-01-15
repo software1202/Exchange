@@ -7,7 +7,7 @@
 		}
 		String userId = (String)session.getAttribute("userId");
 		int pageIndex =1;
-		int pageNum = 0; //显示的分页数目
+		int pageNum = 1; //显示的分页数目
 		int singlePageNum = 3;
 		if(request.getParameter("pageIndex")!=null){
 			pageIndex= Integer.parseInt((String)request.getParameter("pageIndex"));

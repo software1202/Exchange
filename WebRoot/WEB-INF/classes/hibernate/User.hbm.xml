@@ -43,6 +43,9 @@
         <property name="idNum" type="string">
             <column name="IdNum" length="18" />
         </property>
+        <property name="status" type="string">
+            <column name="status" length="5" />
+        </property>
         <set name="chattingsForChatTo" inverse="true">
             <key>
                 <column name="ChatTo" length="10" not-null="true" />

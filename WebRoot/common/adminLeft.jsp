@@ -10,7 +10,7 @@
 										<a href="addComment.jsp" >添加公告</a>
 									</dd>
 									<dd class="mt-menu-sub J_MtSideTree fold">
-										<a href="wantedChange.jsp">想换我的</a>
+										<a href="userManager.jsp">用户管理</a>
 									</dd>
 							</dl>
 						</div>
