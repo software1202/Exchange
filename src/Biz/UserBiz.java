@@ -38,7 +38,7 @@ public class UserBiz {
 	}
 	
 	public boolean addUser(String userId,String userPassword,String userName,
-			int integration,String disId,String phoneNum){
+			int integration,String disId,String phoneNum,String status){
 		
 		
 		User user = new User();
@@ -46,12 +46,14 @@ public class UserBiz {
 		//District district = new District();
 		//java.util.Date nowDate = new java.util.Date();
 		//Date regisDate =nowDate.getTime();// new Date()为获取当前系统时间
+		//System.out.println("111111111");
 		user.setRegisDate(regisDate);
 	    user.setPhoneNumber(phoneNum);
 	    user.setUserId(userId);
 	    user.setUserPassword(userPassword);
 	    user.setUserNickName(userName);
 	    user.setIntegration(integration);
+	    user.setStatus("00");
 	    
 	    //district.setDisId(disId);
 	    //userDAO(district.getDisId());

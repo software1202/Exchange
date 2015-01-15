@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page import="Biz.*,hibernate.*" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,20 +11,124 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>账号注册</title>
-    
+    <link rel="stylesheet" href="css/enroll.css"/>
+    <link rel="stylesheet" href="css/enroll1.css"/>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="data-spm" content="a2145">
     <!--吊顶assets START-->
-    <link rel="stylesheet" href="http://g.tbcdn.cn/??tb/global/2.6.13/global-min.css?t=20140305">
+   
     <!--吊顶assets END-->
-    <link href="https://s.tbcdn.cn/g/tb/register/2.4.0/xcommon/css/??base.css,form.css,btn.css,dialog.css,ks.css,msg.css,password.css,info.css,responsive.css?t=201404171640" rev="stylesheet" rel="stylesheet">
+      <script type="text/javascript">
+     	function Dsy() {
+    this.Items = {};
+}
+Dsy.prototype.add = function(id, iArray) {
+    this.Items[id] = iArray;
+}
+Dsy.prototype.Exists = function(id) {
+    if (typeof (this.Items[id]) == "undefined") return false;
+    return true;
+}
+
+function change(v) {
+    var str = "0";
+    for (i = 0; i < v; i++) { str += ("_" + (document.getElementById(s[i]).selectedIndex - 1)); };
+    var ss = document.getElementById(s[v]);
+    with (ss) {
+        length = 0;
+        options[0] = new Option(opt0[v], opt0[v]);
+        if (v && document.getElementById(s[v - 1]).selectedIndex > 0 || !v) {
+            if (dsy.Exists(str)) {
+                ar = dsy.Items[str];
+                for (i = 0; i < ar.length; i++) options[length] = new Option(ar[i], ar[i]);
+                if (v) options[1].selected = true;
+            }
+        }
+        if (++v < s.length) { change(v); }
+    }
+}
+
+var dsy = new Dsy();
+
+<%
+Biz.LocationBiz addressBiz = new Biz.LocationBiz();
+	Province pro = new Province();
+	
+	List proList = addressBiz.getProviceList();
+	
+	
+
+	pro = (Province)proList.get(0);
+	String tmpString = "dsy.add(\"0\",[\""+pro.getProName()+"\"" ;
+	for(int i=1;i<proList.size();i++){
+	
+		 pro = (Province)proList.get(i);
+		 tmpString +=",\""+pro.getProName()+"\""; 
+		}
+		tmpString +="]);";
+	    out.print(tmpString);
+        City city = new City();
+        District dis = new District();
+        List cityList;
+        List disList;
+        String tmpString1 = "dsy.add(\"0_";
+        String tmpString2="";
+        String tmpString4="";
+        String t1 ="]);";
+        int j;
+        int k;
+       
+	    for(int i=0;i<proList.size();i++){
+	
+		 pro = (Province)proList.get(i);
+		 cityList=addressBiz.getCityList(pro.getProId());
+		 for(j=1;j<cityList.size();j++) {
+		 
+		     city = (City)cityList.get(j);
+		      tmpString2 = ",\""+city.getCityName()+"\"";
+		 }
+		 
+		 String t =i+"\",[\""+((City)cityList.get(0)).getCityName()+"\"";
+		 String tmpString3 = tmpString1+t+tmpString2+"]);";
+		  out.print(tmpString3);
+		 }
+		
+         for(int i=0;i<proList.size();i++){
+	
+		 pro = (Province)proList.get(i);
+		 cityList=addressBiz.getCityList(pro.getProId());
+		 for(j=0;j<cityList.size();j++) {
+		 
+		     city = (City)cityList.get(j);
+		     disList=addressBiz.getdistList(city.getCityId());
+		     for(k=1;k<disList.size();k++){
+		      	
+		      	dis=(District)disList.get(k);
+		      	tmpString4 =  ",\""+dis.getDisName()+"\"";
+		     }
+		     String t2=i+"_"+j+"\",[\""+((District)disList.get(0)).getDisName()+"\"";
+		     String tmpString5=tmpString1+t2+tmpString4+"]);";
+		      out.print(tmpString5);
+		     }
+		     }%>
+        
+        
+
+     	var s = ["province", "city", "county"];
+var opt0 = ["省份", "地级市", "市、县级市、县"];
+function setup() {
+    for (i = 0; i < s.length - 1; i++)
+        document.getElementById(s[i]).onchange = new Function("change(" + (i + 1) + ")");
+    change(0);
+     	}
+     
+     </script>
   </head>
   
   <body>
@@ -52,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<form method="post" action="enroll.do" id="J_InfoForm">				
 				<div class="form-group">
 						<div class="form-item">
-						<span class="form-label form-label-b tsl" data-phase-id="r_p_loginName">登录账号:</span>
+						<span class="form-label form-label-b tsl" data-phase-id="r_p_loginName">登录账号 <span class="req">*</span>:</span>
 						
 							<input type="text" name="userId" id="TPL_username_1" class="login-text J_UserName" value="" maxlength="32" tabindex="2"><span class="req">&nbsp; </span>(格式要求) 
 					</div>
@@ -86,13 +191,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="form-item">
 						<span class="form-label tsl" data-phase-id="r_p_userName">所在地:</span>
-						<input type="text" name="address" id="TPL_username_1" class="login-text J_UserName" value="" maxlength="32" tabindex="1">
-						<select name="cars" style=size:6;width:100pt> 
-                           <option value="volvo">Volvo</option> 
-                           <option value="saab">Saab</option> 
-                           <option value="fiat">Fiat</option> 
-                           <option value="audi">Audi</option> 
-                        </select> 
+						<div class="t1">
+                      
+        				   <div>
+            				  <select name="province" id="province">
+           					  </select>
+            				  <select name="city" id="city">
+            				  </select>
+                			  <select name="county" id="county">
+                			  </select>
+       					   </div>
+    					</div>
+   						 <script language="javascript">
+       						 setup() 
+    					 </script> 
 					</div>
 					
 					<div class="form-item">

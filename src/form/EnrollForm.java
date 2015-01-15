@@ -17,7 +17,15 @@ public class EnrollForm extends ActionForm {
 	private String userPassword;
 	private String userPassword2;
 	private String disId;
+	private String county;
 	private String regisDate;
+	
+	public String getCounty() {
+		return county;
+	}
+	public void setCounty(String county) {
+		this.county = county;
+	}
 	public String getUserId() {
 		return userId;
 	}

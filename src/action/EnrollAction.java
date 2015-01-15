@@ -1,7 +1,5 @@
 package action;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +8,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import Biz.LocationBiz;
 import Biz.UserBiz;
 import form.EnrollForm;
 
@@ -20,15 +19,21 @@ public ActionForward execute(ActionMapping mapping, ActionForm form,
 		throws Exception {
 	// TODO Auto-generated method stub
 	   EnrollForm enrollform = (EnrollForm)form;
+	   LocationBiz addressBiz = new LocationBiz();
 	   String userId = enrollform.getUserId();
 	   String userPassword = enrollform.getUserPassword();
 	   String userName = enrollform.getUserName();
+	   String status = "00";
+	   String district = enrollform.getCounty();
+	   
+	   district = new String(district.getBytes("iso-8859-1"),"UTF-8");
+	   String disId = (addressBiz.getDis(district)).getDisId();
 	   //String disId = enrollform.getDisId();
-	   String disId = "1100200001";
+	   //String disId = "1100200001";
 	   String phoneNum = "1234567";
 	   int integration = 123;
 	   UserBiz userBiz = new UserBiz();
-	   userBiz.addUser(userId, userPassword, userName, integration, disId, phoneNum);
+	   userBiz.addUser(userId, userPassword, userName, integration, disId, phoneNum,status);
 	   return mapping.findForward("success");
 	   
 	//return super.execute(mapping, form, request, response);

@@ -39,7 +39,7 @@ public class GoodsBiz {
 	public Goods getGoods(String goodsId){
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
-		Query query = session.createQuery("from Goods where GoodsId="+ goodsId);
+		Query query = session.createQuery("from Goods where GoodsId='"+ goodsId+"'");
 		//session.close();
 		if(query.list() != null){
 			

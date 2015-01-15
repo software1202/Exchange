@@ -13,6 +13,7 @@
   	<form-bean name="searchGoodsForm" type="form.SearchGoodsForm" />
   	<form-bean name="editTradeInformationForm" type="form.EditTradeInformationForm" />
   	<form-bean name="confirmTrade" type="form.ConfirmTradeForm" />
+  	<form-bean name="enrollForm" type="form.EnrollForm" />
   </form-beans>
   <global-exceptions />
   <global-forwards />
@@ -25,6 +26,15 @@
       type="action.LoginAction">
       <forward name="success" path="/index.jsp" />
       <forward name="failed" path="/login.jsp" />
+    </action>
+    <action
+      attribute="enrollForm"
+      input="/enroll.jsp"
+      name="enrollForm"
+      path="/enroll"
+      type="action.EnrollAction">
+      <forward name="success" path="/index.jsp" />
+      <forward name="failed" path="/enroll.jsp" />
     </action>
     <action
       attribute="adminLoginForm"

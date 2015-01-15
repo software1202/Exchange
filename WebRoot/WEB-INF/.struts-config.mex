@@ -16,23 +16,39 @@
   <StrutsActivity path="/uploadGoods.jsp" location="950,250" dimension="137,53" />
   <StrutsActivity path="/wantChange.jsp" location="50,450" dimension="128,53" />
   <StrutsActivity path="/Goodsdetail.jsp" location="350,450" dimension="128,53" />
+  <StrutsActivity path="/exchanging.jsp" location="50,1250" dimension="123,53" />
   <StrutsActivity path="/changetalk.jsp" location="50,850" dimension="120,53" />
   <StrutsActivity path="/showGoods.jsp" location="950,650" dimension="126,53" />
   <StrutsActivity path="/noLogin.jsp" location="650,450" dimension="104,53" />
   <StrutsActivity path="/wantedChange.jsp" location="50,650" dimension="143,53" />
   <StrutsActivity path="/error.jsp" location="50,1050" dimension="87,53" />
   <StrutsActivity path="/editTradeInformation.jsp" location="950,850" dimension="181,53" />
-  <StrutsActivity path="/exchanging.jsp" location="50,1250" dimension="123,53" />
   <StrutsActivity path="/confirmTradeInformation.jsp" location="950,1050" dimension="203,53" />
   <StrutsActivity path="/tttt.jsp" location="950,450" dimension="73,53" />
   <StrutsActivity path="/searchGoods.jsp" location="650,650" dimension="134,53" />
   <StrutsActivity path="editTradeInformation.jsp" location="650,850" dimension="176,53" />
+  <StrutsActivity path="/enroll.do" location="650,1050" dimension="148,104" />
+  <StrutsActivity path="/enroll.jsp" location="1250,1050" dimension="90,53" />
   <StrutsTransition id="/uploadGoods.jsp,null,/uploadGoods.do,2" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="1018,250" />
       <AbsolutePoint location="1018,169" />
       <AbsolutePoint location="393,169" />
       <AbsolutePoint location="393,154" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/enroll.do,failed,/enroll.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="724,1102" />
+      <AbsolutePoint location="1295,1076" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/enroll.do,success,/index.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="798,1088" />
+      <AbsolutePoint location="885,1088" />
+      <AbsolutePoint location="885,276" />
+      <AbsolutePoint location="738,276" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/startExchange.do,wantedChange,/wantedChange.jsp,1" routingType="0">
@@ -54,6 +70,13 @@
       <AbsolutePoint location="111,1276" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/confirmTrade.do,changetalk,/changetalk.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,1058" />
+      <AbsolutePoint location="152,1058" />
+      <AbsolutePoint location="152,903" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/uploadGoods.do,success,/index.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="451,154" />
@@ -67,11 +90,11 @@
       <AbsolutePoint location="137,1076" />
     </AutomaticBendpoints>
   </StrutsTransition>
-  <StrutsTransition id="/confirmTrade.do,changetalk,/changetalk.jsp,1" routingType="0">
+  <StrutsTransition id="/enroll.jsp,null,/enroll.do,2" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="350,1058" />
-      <AbsolutePoint location="152,1058" />
-      <AbsolutePoint location="152,903" />
+      <AbsolutePoint location="1295,1103" />
+      <AbsolutePoint location="1295,1118" />
+      <AbsolutePoint location="798,1118" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/startExchange.do,goodsDetail,/Goodsdetail.jsp,1" routingType="0">
@@ -163,6 +186,16 @@
       <AbsolutePoint location="350,918" />
       <AbsolutePoint location="93,918" />
       <AbsolutePoint location="93,1050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/enroll.do,failed,/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="724,1050" />
+      <AbsolutePoint location="724,999" />
+      <AbsolutePoint location="-45,999" />
+      <AbsolutePoint location="-45,169" />
+      <AbsolutePoint location="363,169" />
+      <AbsolutePoint location="363,250" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/startExchange.do,wantChange,/wantChange.do,1" routingType="0">
