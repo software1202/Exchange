@@ -160,7 +160,27 @@ function setup() {
 						<span class="form-label form-label-b tsl" data-phase-id="r_p_loginName">登录账号 <span class="req">*</span>:</span>
 						
 							<input type="text" name="userId" id="TPL_username_1" class="login-text J_UserName" value="" maxlength="32" tabindex="2"><span class="req">&nbsp; </span>(格式要求) 
+						<%
+							String ErrorInformation = (String)request.getAttribute("userIdError");
+							if(ErrorInformation!=null){
+								if(ErrorInformation.equals("01")){
+									%>
+										<font style="color: red;">不能为空</font>
+									<%
+								}else if(ErrorInformation.equals("02")){
+									%>
+										<font style="color: red;">不能超过10个字符</font>
+									<%
+								}else if(ErrorInformation.equals("03")){
+									%>
+										<font style="color: red;">含有非法字符</font>
+									<%
+								}
+							}
+						 %>
+						
 					</div>
+					
 				</div>
 									
 				<div class="form-group">
@@ -170,12 +190,41 @@ function setup() {
 					<div class="form-item">
 						<span class="form-label tsl" data-phase-id="r_p_password">登录密码:</span>
 						    <input type="password" aria-labelledby="password-label" name="userPassword" id="TPL_password_1" class="login-text" maxlength="32" tabindex="2"><span class="req">&nbsp; </span>(格式要求) 		
+						    <%
+							ErrorInformation = (String)request.getAttribute("userPasswordError");
+							if(ErrorInformation!=null){
+								if(ErrorInformation.equals("01")){
+									%>
+										<font style="color: red;">不能为空</font>
+									<%
+								}else if(ErrorInformation.equals("02")){
+									%>
+										<font style="color: red;">不能超过10个字符</font>
+									<%
+								}else if(ErrorInformation.equals("03")){
+									%>
+										<font style="color: red;">含有非法字符</font>
+									<%
+								}
+							}
+						 %>
 					</div>
 					
 					<div class="form-item">
 						<span class="form-label tsl" data-phase-id="r_p_confirmPassword">再次确认:</span>
 							<input type="password" aria-labelledby="password-label" name="uerPassword2" id="TPL_password_1" class="login-text" maxlength="32" tabindex="1">
-						
+						   <%  ErrorInformation = (String)request.getAttribute("userPasswordError");
+							if(ErrorInformation!=null){
+								if(ErrorInformation.equals("01")){
+									%>
+										<font style="color: red;">不能为空</font>
+									<%
+								}else if(ErrorInformation.equals("04")){
+									%>
+										<font style="color: red;">两次密码不一致</font>
+									<% }
+									}%>
+							
 					</div>
 				</div>
 				<div class="form-group">
@@ -185,6 +234,24 @@ function setup() {
 					<div class="form-item">
 						<span class="form-label tsl" data-phase-id="r_p_userName">用户昵称:</span>
 						<input type="text" name="userName" id="TPL_username_1" class="login-text J_UserName" value="" maxlength="32" tabindex="1"><span class="req">&nbsp; </span>(格式要求) 
+					    <%
+							ErrorInformation = (String)request.getAttribute("userNameError");
+							if(ErrorInformation!=null){
+								if(ErrorInformation.equals("01")){
+									%>
+										<font style="color: red;">不能为空</font>
+									<%
+								}else if(ErrorInformation.equals("02")){
+									%>
+										<font style="color: red;">不能超过10个字符</font>
+									<%
+								}else if(ErrorInformation.equals("03")){
+									%>
+										<font style="color: red;">含有非法字符</font>
+									<%
+								}
+							}
+						 %>
 					</div>
 					<div class="form-item">
 						<span class="form-label form-label-b tsl" data-phase-id="r_ui_enterUserNameTip">设置联系方式</span>
@@ -192,6 +259,24 @@ function setup() {
 					<div class="form-item">
 						<span class="form-label tsl" data-phase-id="r_p_userName">手机:</span>
 						<input type="text" name="phoneNum" id="TPL_username_1" class="login-text J_UserName" value="" maxlength="32" tabindex="1"><span class="req">&nbsp; </span>(格式要求) 
+						<%
+							ErrorInformation = (String)request.getAttribute("phoneNumError");
+							if(ErrorInformation!=null){
+								if(ErrorInformation.equals("01")){
+									%>
+										<font style="color: red;">不能为空</font>
+									<%
+								}else if(ErrorInformation.equals("02")){
+									%>
+										<font style="color: red;">不能超过11个字符</font>
+									<%
+								}else if(ErrorInformation.equals("03")){
+									%>
+										<font style="color: red;">含有非法字符</font>
+									<%
+								}
+							}
+						 %>					
 					</div>
 					<div class="form-item">
 						<span class="form-label form-label-b tsl" data-phase-id="r_ui_enterUserNameTip">设置用户所在地</span>
@@ -211,6 +296,24 @@ function setup() {
        					   <div>
        					    <span class="form-label tsl" data-phase-id="r_p_userName">详细地址:</span>
        					    <input type="text" name="userAddress" id="TPL_username_1"  value=""  maxlength="32" tabindex="1" > 
+       					   <%
+							ErrorInformation = (String)request.getAttribute("userAddressError");
+							if(ErrorInformation!=null){
+								if(ErrorInformation.equals("01")){
+									%>
+										<font style="color: red;">不能为空</font>
+									<%
+								}else if(ErrorInformation.equals("02")){
+									%>
+										<font style="color: red;">不能超过30个字符</font>
+									<%
+								}else if(ErrorInformation.equals("03")){
+									%>
+										<font style="color: red;">含有非法字符</font>
+									<%
+								}
+							}
+						 %>
        					   </div>
     					</div>
    						 <script language="javascript">

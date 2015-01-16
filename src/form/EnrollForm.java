@@ -1,6 +1,8 @@
 package form;
 
 import java.io.UnsupportedEncodingException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -81,38 +83,121 @@ public class EnrollForm extends ActionForm {
 	
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
-//		try {
-//			//goodsName = new String(goodsName.getBytes("ISO-8859-1"),"UTF-8");
-//			//describe = new String(describe.getBytes("ISO-8859-1"),"UTF-8");
-//			//NewDegree = new String(NewDegree.getBytes("ISO-8859-1"),"UTF-8");
-//		} catch (UnsupportedEncodingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		ActionErrors errors = new ActionErrors();
-		if(userId==null){
-			errors.add("noUserId",new ActionMessage("noUserIdError"));
-			//return errors;
-		}
-		if(userPassword.equals("")){
+		try{
+		
+			userId = new String(userId.getBytes("iso-8859-1"),"UTF-8");
+			if(userId.equals("")){
+				request.setAttribute("userIdError", "01");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			if(userId.length()>10){
+				request.setAttribute("userIdError", "02");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			if(!isLegal(userId)){
+				request.setAttribute("userIdError", "03");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
 			
-			errors.add("noUserPassword",new ActionMessage("noUserPasswordError"));
-			//return errors;
+			userPassword = new String(userPassword.getBytes("iso-8859-1"),"UTF-8");
+			if(userPassword.equals("")){
+				request.setAttribute("userPasswordError", "01");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			if(userPassword.length()>10){
+				request.setAttribute("userPasswordError", "02");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			if(!isLegal(userPassword)){
+				request.setAttribute("userPasswordError", "03");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			
+			userPassword2 = new String(userPassword2.getBytes("iso-8859-1"),"UTF-8");
+			if(userPassword2.equals("")){
+				request.setAttribute("userPassword2Error", "01");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			
+			if(userPassword!=userPassword2){
+				request.setAttribute("userPassword2Error", "04");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			
+			
+			
+			userName = new String(userName.getBytes("iso-8859-1"),"UTF-8");
+			if(userName.equals("")){
+				request.setAttribute("userNameError", "01");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			if(userName.length()>10){
+				request.setAttribute("userNameError", "02");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			if(!isLegal(userName)){
+				request.setAttribute("userNameError", "03");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			
+			
+			
+			phoneNum = new String(phoneNum.getBytes("iso-8859-1"),"UTF-8");
+			if(phoneNum.equals("")){
+				request.setAttribute("phoneNumError", "01");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			if(phoneNum.length()>11){
+				request.setAttribute("phoneNumError", "02");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			if(!isLegal(phoneNum)){
+				request.setAttribute("phoneNumError", "03");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			userAddress = new String(userAddress.getBytes("iso-8859-1"),"UTF-8");
+			if(userAddress.equals("")){
+				request.setAttribute("userAddressError", "01");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			if(userAddress.length()>30){
+				request.setAttribute("userAddressError", "02");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			if(!isLegal(userAddress)){
+				request.setAttribute("userAddressError", "03");
+				errors.add("errors",new ActionMessage("errors"));
+				return errors;
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
 		}
-		//request.setAttribute("GoodsName", goodsName);
-		if(userName.equals("")){
-			errors.add("noUserName",new ActionMessage("noUserNameError"));
-			//return errors;
-		}
-		
-		
-		//request.setAttribute("Brand", brand);
-//		if(describe.equals("")){
-//			errors.add("noDec",new ActionMessage("noDecError"));
-//			return errors;
-//		}
-		//request.setAttribute("Describe", describe);
 		return errors;
 	}
-	
+	private boolean isLegal(String str){
+		//¹ýÂË,·½sql×¢Èë
+		System.out.println(str);
+		Pattern p = Pattern.compile("([~!@#$%^&\\*()_+\\-=;':\",\\./<>?|\\s]|drop|delete|truncate|and|or)"); 
+		Matcher m = p.matcher(str);   
+		if(m.find())return false;
+		return true;
+	}
 }

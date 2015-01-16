@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             			%>
             				<a class="a-float-left" href="login.jsp">登陆</a>
                 			<span class="vertical-line">|</span>
-                			<a class="a-float-left" href="#">注册</a>
+                			<a class="a-float-left" href="enroll.jsp">注册</a>
             			<%
             		}else{
             			%>
