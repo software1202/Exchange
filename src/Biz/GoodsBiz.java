@@ -13,7 +13,6 @@ import org.hibernate.Session;
 
 
 public class GoodsBiz {
-	//AnnotationConfiguration configuration = new AnnotationConfiguration();
 	public boolean addGoods(String userId,String goodsName,String imgSrc,String brand,String describe) {
 		Goods goods = new Goods();
 		goods.setGoodsName(goodsName);
@@ -26,12 +25,7 @@ public class GoodsBiz {
 		Session session= HibernateSessionFactory.getSession();
 		session.beginTransaction();
 		session.save(goods);
-		//String sql = null;
-		//sql = "INSERT INTO Goods(GoodsId,GoodsName,brand,Describe,image) VALUES ('"+goods.getGoodsId()+"','"+
-		//goods.getGoodsName()+"','"+goods.getBrand()+"','"+goods.getDescribe()+"','"+goods.getDescribe()+"','"+
-				//goods.getImage()+"')";
-		//Query q = session.createQuery(sql);
-		//q.executeUpdate();
+		
 		session.beginTransaction().commit();
 		session.close();
 		return true;

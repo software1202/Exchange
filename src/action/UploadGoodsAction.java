@@ -42,7 +42,6 @@ public class UploadGoodsAction extends Action{
 			String brand = upf.getBrand();
 			String dec = upf.getDescribe();
 			String newd = upf.getNewDegree();
-			
 			String userId = (String)session.getAttribute("userId");
 			System.out.println(userId+" "+goodsName+" "+brand+" "+dec+" "+newd);
 			

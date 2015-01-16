@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" import = "hibernate.*,javax.servlet.http.HttpServletRequest"%>
+<%@ page language="java" pageEncoding="UTF-8" import = "Biz.*,hibernate.*,javax.servlet.http.HttpServletRequest"%>
 
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" %>
@@ -12,7 +12,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="GDK">
     <title>上传物品</title>
     <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="css/font-awesome.min.css"/>
@@ -116,6 +115,51 @@ function clacImgZoomParam( maxWidth, maxHeight, width, height ){
     return param;
 }
 </script>
+      <script language="JavaScript" type="text/javascript">
+			<%
+				MenuBiz menuBiz = new MenuBiz();
+				List menuList = menuBiz.getMenuList();
+				String headString = "var city = [";
+				String endString = "];" ;
+				for(int i=0;i<menuList.size();i++){
+					Menu menu=(Menu)menuList.get(i);
+					List subMenuList = menuBiz.getSubMenuByMenuId(menu.getMenuId());
+					String tmp ="[ ";
+					for(int j=0;j<subMenuList.size();j++){
+						if(j==subMenuList.size()-1){
+							Submenu submenu = (Submenu)subMenuList.get(j);
+							tmp += "\""+ submenu.getSubMenuName()+"\"";
+						}else{
+							Submenu submenu = (Submenu)subMenuList.get(j);
+							tmp += "\""+ submenu.getSubMenuName()+"\",";
+						}
+						
+					}
+					tmp+=" ],";
+					headString += tmp;
+				}
+				headString+= endString;
+				out.println(headString);
+			%>
+			function getCity() {
+			
+				var sltProvince = document.getElementById('province');
+				
+				var sltCity = document.getElementById('city');
+
+			
+				var provinceCity = city[sltProvince.selectedIndex - 1];
+
+				
+				sltCity.length = 1;
+
+				
+				for ( var i = 0; i < provinceCity.length; i++) {
+					sltCity[i + 1] = new Option(provinceCity[i],
+							provinceCity[i]);
+				}
+			}
+		</script>
 </head>
 <body>
 	<%@ include file="common/top_main.jsp" %>
@@ -132,8 +176,7 @@ function clacImgZoomParam( maxWidth, maxHeight, width, height ){
 		
 	<div class="bought-list">
 	  <font size=5><b>上传物品</b></font>
-	  <html:form action="/uploadGoods.do"
-	  enctype="multipart/form-data" method="post"> 
+	  <html:form action="/uploadGoods.do" enctype="multipart/form-data" method="post"> 
 	  <table class="inputTable">
 	  	<tr style="height:220px;">
 	  		<td>
@@ -206,18 +249,28 @@ function clacImgZoomParam( maxWidth, maxHeight, width, height ){
         <tr>
           <td> 
               <div class="form_label">
-             <%
-              		String brand=(String)request.getAttribute("brand");
- 					if(brand!=null){
- 					 %>
- 					 	<input type="text" class="input_box" name="brand" value="<%out.print(brand);%>"/><br/>   
- 					 <%    
- 					 }else{
- 					 %>
- 					 	<input type="text" class="input_box" name="brand" /><br/>   
- 					 <% 
- 					 }       
-               %>
+             		
+             <SELECT class="input_box" id="province" name="menu" onChange="getCity()">
+				<OPTION VALUE="0">
+					请选择分类
+				</OPTION>
+				<%
+					for(int i=0;i<menuList.size();i++){
+						Menu menu = (Menu)menuList.get(i);
+						%>
+							<OPTION VALUE="<% out.print(menu.getMenuId());%>">
+								<% out.print(menu.getMenuName());%>							
+							</OPTION>
+						<%
+					}
+				 %>
+			</SELECT>
+			<SELECT class="input_box" name="submenu" id="city">
+				<OPTION VALUE="0">
+					请选择子分类
+				</OPTION>
+			</SELECT>
+             		
               </div>
           </td>
           <td style="width:200px">
@@ -270,7 +323,7 @@ function clacImgZoomParam( maxWidth, maxHeight, width, height ){
        </table>
 	</html:form>
 	</div><!--end bought-list-->
-
+	
 	</div>
 					</div>
 				</div>

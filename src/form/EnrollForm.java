@@ -19,7 +19,23 @@ public class EnrollForm extends ActionForm {
 	private String disId;
 	private String county;
 	private String regisDate;
+	private String phoneNum;
+	private String userAddress;
 	
+    public String getPhoneNum() {
+		return phoneNum;
+	}
+    public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
+    
+   public void setUserAddress(String userAddress) {
+	this.userAddress = userAddress;
+    }
+	
+   public String getUserAddress() {
+	return userAddress;
+}
 	public String getCounty() {
 		return county;
 	}

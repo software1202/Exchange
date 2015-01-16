@@ -52,7 +52,7 @@ public class UserBiz {
 	}
 	
 	public boolean addUser(String userId,String userPassword,String userName,
-			int integration,String disId,String phoneNum,String status){
+			int integration,String disId,String phoneNum,String address,String status){
 		
 		
 		User user = new User();
@@ -68,13 +68,14 @@ public class UserBiz {
 	    user.setUserNickName(userName);
 	    user.setIntegration(integration);
 	    user.setStatus("00");
+	    user.setAddress(address);
 	    
 	    //district.setDisId(disId);
 	    //userDAO(district.getDisId());
 	    DistrictDAO districtDAO = new DistrictDAO();
 	    District district = districtDAO.findById(disId); 
 	    user.setDistrict(district);
-	    user.setAddress(district.getDisName());
+	    //user.setAddress(district.getDisName());
 	    System.out.println(district.getDisName());
 	    System.out.println(user.getDistrict().getDisId());
 	    Session session = HibernateSessionFactory.getSession();

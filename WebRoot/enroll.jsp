@@ -187,6 +187,13 @@ function setup() {
 						<input type="text" name="userName" id="TPL_username_1" class="login-text J_UserName" value="" maxlength="32" tabindex="1"><span class="req">&nbsp; </span>(格式要求) 
 					</div>
 					<div class="form-item">
+						<span class="form-label form-label-b tsl" data-phase-id="r_ui_enterUserNameTip">设置联系方式</span>
+					</div>
+					<div class="form-item">
+						<span class="form-label tsl" data-phase-id="r_p_userName">手机:</span>
+						<input type="text" name="phoneNum" id="TPL_username_1" class="login-text J_UserName" value="" maxlength="32" tabindex="1"><span class="req">&nbsp; </span>(格式要求) 
+					</div>
+					<div class="form-item">
 						<span class="form-label form-label-b tsl" data-phase-id="r_ui_enterUserNameTip">设置用户所在地</span>
 					</div>
 					<div class="form-item">
@@ -201,10 +208,17 @@ function setup() {
                 			  <select name="county" id="county">
                 			  </select>
        					   </div>
+       					   <div>
+       					    <span class="form-label tsl" data-phase-id="r_p_userName">详细地址:</span>
+       					    <input type="text" name="userAddress" id="TPL_username_1"  value=""  maxlength="32" tabindex="1" > 
+       					   </div>
     					</div>
    						 <script language="javascript">
        						 setup() 
-    					 </script> 
+    					 </script>
+    					 
+    					 
+    					
 					</div>
 					
 					<div class="form-item">

@@ -25,15 +25,19 @@ public ActionForward execute(ActionMapping mapping, ActionForm form,
 	   String userName = enrollform.getUserName();
 	   String status = "00";
 	   String district = enrollform.getCounty();
-	   
+	   //System.out.println("111111111111");
+	   String address = enrollform.getUserAddress();
+	   //System.out.println("111111111111");
+	   System.out.println(address);
 	   district = new String(district.getBytes("iso-8859-1"),"UTF-8");
+	   address = new String(address.getBytes("iso-8859-1"),"UTF-8");
 	   String disId = (addressBiz.getDis(district)).getDisId();
 	   //String disId = enrollform.getDisId();
 	   //String disId = "1100200001";
-	   String phoneNum = "1234567";
+	   String phoneNum = enrollform.getPhoneNum();
 	   int integration = 123;
 	   UserBiz userBiz = new UserBiz();
-	   userBiz.addUser(userId, userPassword, userName, integration, disId, phoneNum,status);
+	   userBiz.addUser(userId, userPassword, userName, integration, disId, phoneNum,address,status);
 	   return mapping.findForward("success");
 	   
 	//return super.execute(mapping, form, request, response);
