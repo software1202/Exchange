@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             			%>
             				
             				<div data-toggle="arrowdown" id="arrow3" class="user-name">
-                    		个人空间
+                    			<a href="wantChange.do">个人空间</a>
                     		<span class="down-icon"></span>
                 			</div>
                 			<span class="vertical-line">|</span>
@@ -146,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<%
                 		for(int i=0;i<menuList.size();i++){
                 			%>
-                	<li data-hidden="li" id="hiden-<%out.print(i);%>">
+                	<li data-hidden="li" id="hiden-<%out.print(i+1);%>">
                         <div class="hidden-title">
                             
                         </div>

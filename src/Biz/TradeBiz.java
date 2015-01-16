@@ -99,6 +99,12 @@ public class TradeBiz {
 		Query query = session.createQuery("from Booking where (userByBuserId='"+userId+"' and bstatus='06') or  (userByAuserId='"+userId+"' and astatus='06')");
 		return query.list();
 	}
+	
+	public List getCompleteTradeList(String userId){
+		Session session = HibernateSessionFactory.getSession();
+		Query query = session.createQuery("from Booking where (userByBuserId='"+userId+"' and bstatus='07') or  (userByAuserId='"+userId+"' and astatus='07')");
+		return query.list();
+	}
 	//用户同意一个换享
 	public String agreeExchange(String tradeId,String goodsId){
 		try { 

@@ -18,6 +18,9 @@
 									<dd class="mt-menu-sub unfold fold J_MtSideTree">
 										<a href="exchanging.jsp" >正在交换</a>
 									</dd>
+									<dd class="mt-menu-sub unfold fold J_MtSideTree">
+										<a href="tradeInformation.jsp">已完成交易</a>
+									</dd>
 								<dt class="fs14 mt-btn-go-setings" id="MTB_ItemsSetings">物品管理<span class="mt-menu-right-arr"><em></em></span></dt>
 									<dd class="mt-menu-sub unfold fold J_MtSideTree">
 										<a href="uploadGoods.jsp" >上传物品</a>
@@ -28,25 +31,10 @@
 								<dt class="fs14 mt-btn-go-setings" id="MTB_ItemsSetings">我的信息<span class="mt-menu-right-arr"><em></em></span></dt>
 									
 									<dd class="mt-menu-sub J_MtSideTree fold">
-										<a href="gerenxinxi.html"  >个人信息</a>
+										<a href="personalInformation.jsp"  >个人信息</a>
 									</dd>
 									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="exchange records.html">交换记录</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="password.html">修改密码</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="grademx.html">积分历史</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href=""  >修改收货地址</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="webimformation.jsp">站内消息</a>
-									</dd>
-									<dd class="mt-menu-sub unfold fold J_MtSideTree">
-										<a href="complain.html">投诉</a>
+										<a href="webInformation.jsp">站内消息</a>
 									</dd>
 							</dl>
 						</div>

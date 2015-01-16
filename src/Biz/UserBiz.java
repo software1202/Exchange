@@ -122,5 +122,12 @@ public class UserBiz {
 		return query.list();
 	}
 	
+	public User getUserById(String userId){
+		Session session = HibernateSessionFactory.getSession();
+		Query query = session.createQuery("from User where userId='"+userId+"'");
+		User user = (User)query.list().get(0);
+		return user;
+		
+	}
 
 }
