@@ -56,7 +56,7 @@ public class GoodsBiz {
 	
 	public List getGoodsListByKeyWord(String keyWord){
 		Session session = HibernateSessionFactory.getSession();
-		String hql = "from Goods as g where g.goodsName like :name"; // 调用 session 的获得数据列表方法，传递 HQL 查询语句 
+		String hql = "from Goods as g where g.status='00' and g.goodsName like :name"; // 调用 session 的获得数据列表方法，传递 HQL 查询语句 
 		Query query = session.createQuery(hql); 
 		query.setString("name","%"+keyWord+"%"); 
 		
@@ -69,7 +69,7 @@ public class GoodsBiz {
 	
 	public List getGoodsListByType(String type){
 		Session session = HibernateSessionFactory.getSession();
-		String hql = "from Goods as g where g.submenu='"+type+"'"; // 调用 session 的获得数据列表方法，传递 HQL 查询语句 
+		String hql = "from Goods as g where g.status='00' and g.submenu='"+type+"'"; // 调用 session 的获得数据列表方法，传递 HQL 查询语句 
 		Query query = session.createQuery(hql); 
 		List goodsList = query.list();
 		session.close();
@@ -78,7 +78,7 @@ public class GoodsBiz {
 	
 	public List getUserAllGoods(String userId){
 		Session session = HibernateSessionFactory.getSession();
-		String hql = "from Goods as g where g.user='"+userId+"'";
+		String hql = "from Goods as g where g.status='00' and g.user='"+userId+"'";
 		Query query = session.createQuery(hql); 	
 		List goodsList = query.list();
 		session.close();
@@ -88,12 +88,10 @@ public class GoodsBiz {
 	public boolean deleteGoodsById(String goodsId){
 		try {
 			Session session = HibernateSessionFactory.getSession();
-			String hql = "from Goods where goodsId='"+goodsId+"'";
-			Query query = session.createQuery(hql); 
-			Goods goods = (Goods) query.list().get(0);
-			session.beginTransaction();
-			session.delete(goods);
-			session.beginTransaction().commit();
+			session.beginTransaction();  
+			Query query = session.createQuery("update Goods g set g.status = '04' where g.goodsId='"+goodsId+"'");  
+			query.executeUpdate();  
+			session.getTransaction().commit(); 
 			session.close();
 			return true;
 		} catch (Exception e) {

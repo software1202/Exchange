@@ -188,6 +188,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                
                         <form style="display:no" id="searchByType<%out.print(submenu.getSubMenuId());%>" action="searchGoods.do" method="get">
                         	<input type="hidden" name="type"  value="<%out.print(submenu.getSubMenuId());%>"/>
+                        	<input type="hidden" name="keyWord"  value=""/>
                         </form>
                     <%
                }
@@ -255,7 +256,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="#">来往首届419宇宙节</a>
                     -->
                     	<%
-                    		for(int i=0;i<informList1.size()&&i<4;i++){
+                    		for(int i=0;i<informList1.size()&&i<3;i++){
                     			Inform inform = (Inform)informList1.get(i);
                     			Date informDate = inform.getTime();
                     			%>
@@ -274,7 +275,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div id="box-2" class="hiddenBox">
 
                         <%
-                    		for(int i=0;i<informList2.size()&&i<4;i++){
+                    		for(int i=0;i<informList2.size()&&i<3;i++){
                     			Inform inform = (Inform)informList2.get(i);
                     			Date informDate = inform.getTime();
                     			%>
@@ -292,7 +293,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div id="box-3" class="hiddenBox">
                         <%
-                    		for(int i=0;i<informList3.size()&&i<4;i++){
+                    		for(int i=0;i<informList3.size()&&i<3;i++){
                     			Inform inform = (Inform)informList3.get(i);
                     			Date informDate = inform.getTime();
                     			%>
@@ -311,7 +312,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div id="box-4" class="hiddenBox">
 
                         <%
-                    		for(int i=0;i<informList4.size()&&i<4;i++){
+                    		for(int i=0;i<informList4.size()&&i<3;i++){
                     			Inform inform = (Inform)informList4.get(i);
                     			Date informDate = inform.getTime();
                     			%>
@@ -329,7 +330,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div id="box-5" class="hiddenBox">
                         <%
-                    		for(int i=0;i<informList5.size()&&i<4;i++){
+                    		for(int i=0;i<informList5.size()&&i<3;i++){
                     			Inform inform = (Inform)informList5.get(i);
                     			Date informDate = inform.getTime();
                     			%>

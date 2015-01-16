@@ -89,21 +89,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<%
 			}
 		}
-		if(request.getParameter("content")!=null){
-			String content = (String)request.getParameter("content");
-			content = new String(content.getBytes("iso-8859-1"),"UTF-8");
-			String contentType = request.getParameter("contentType");
-			
-			if(informBiz.addInform(content, contentType)){
+		String content = (String)request.getParameter("content");
+		if(content!=null){
+			if(content.length()<200&&content.length()!=0){
+				content = new String(content.getBytes("iso-8859-1"),"UTF-8");
+				String contentType = request.getParameter("contentType");
+				if(informBiz.addInform(content, contentType)){
+					%>
+						<script>
+							alert("添加成功");
+						</script>
+					<%
+				}else{
+					%>
+						<script>
+							alert("添加失败");
+						</script>
+					<%
+				}
+			}else if(content.length()>=200){
 				%>
 					<script>
-						alert("添加成功");
+						alert("发布失败，公告内容过长，不超过100字");
 					</script>
 				<%
 			}else{
 				%>
 					<script>
-						alert("添加失败");
+						alert("发布失败，公告内容为空");
 					</script>
 				<%
 			}
@@ -223,7 +236,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	<table id=aaid>   
      	<tr>  
      		<td> 
-     	 	新增内容 : <input name="content" style="width:300px;height:100px" id="bid" type="text" size="20%"> 
+     	 	新增内容 : <textarea name="content" style="width:300px;height:100px" id="bid"  size="20%" ></textarea> 
      	 	</td>   
            <td>                           
                                        新增 类型 :   

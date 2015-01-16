@@ -18,13 +18,13 @@ public class InformBiz {
 
 	public List getInformList(){
 		Session session = HibernateSessionFactory.getSession();
-		Query query = session.createQuery("from Inform");
+		Query query = session.createQuery("from Inform order by time desc");
 		return query.list();
 	}
 	
 	public List getInformBytype(String type){
 		Session session = HibernateSessionFactory.getSession();
-		Query query = session.createQuery("from Inform where type='"+type+"'");
+		Query query = session.createQuery("from Inform where type='"+type+"' order by time desc");
 		return query.list();
 	}
 	

@@ -25,7 +25,8 @@ public class SearchGoodsAction extends Action{
 		String keyWord = searchGoodsForm.getKeyWord();
 		String type = searchGoodsForm.getType();
 		List goodsList;
-		if(keyWord.equals("")){
+		System.out.println(keyWord+" "+type);
+		if(!keyWord.equals("")){
 			keyWord = new String(keyWord.getBytes("ISO-8859-1"),"UTF-8");
 			GoodsBiz goodsBiz = new GoodsBiz();
 			goodsList = goodsBiz.getGoodsListByKeyWord(keyWord);

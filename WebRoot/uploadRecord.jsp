@@ -102,8 +102,10 @@
       								out.print("已上传");
       							}else if(status.equals("01")){
       								out.print("正在交易");
-      							}else if(status.equals("01")){
+      							}else if(status.equals("02")){
       								out.print("已交易");
+      							}else if(status.equals("04")){
+      								out.print("已删除");
       							}
       						%>
       					

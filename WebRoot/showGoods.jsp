@@ -135,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</h3>
 
 									<div class="row">
-										<div class="col end loc">广东 中山</div>
+										<div class="col end loc">  </div>
 									</div>
 
 								</div>

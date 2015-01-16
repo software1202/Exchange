@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 			%>
 							<div class="safe">
 								<span class="safe-login"></span>
-								<a href="http://110.taobao.com/account/activate.htm" target="_blank" id="forget-pw-safe" class="forget-pw">忘记登录密码?</a>
+								<a href="" target="_blank" id="forget-pw-safe" class="forget-pw"></a>
 								<div class="login-tips" style="visibility:hidden;">
 									<div class="login-tips-content"></div>
 								</div>
@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<button type="submit" class="J_Submit" tabindex="5" id="J_SubmitStatic">登　录</button>
 							</div>
 							<ul class="entries">
-								<li id="registerUrl_1" class="register"><a id="J_RegisterLink1" href="http://reg.taobao.com/member/newbie.htm?from=login" target="_blank" tabindex="8">免费注册</a></li>
+								<li id="registerUrl_1" class="register"><a id="J_RegisterLink1" href="enroll.jsp" target="_blank" tabindex="8">免费注册</a></li>
 							</ul>
 						</form>
 					</div>
