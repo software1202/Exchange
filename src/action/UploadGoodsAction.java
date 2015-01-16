@@ -1,6 +1,7 @@
 package action;
 
 import hibernate.Goods;
+import hibernate.Submenu;
 import hibernate.User;
 import hibernate.UserDAO;
 
@@ -22,6 +23,7 @@ import org.apache.struts.upload.FormFile;
 import sun.swing.FilePane;
 
 import Biz.GoodsBiz;
+import Biz.MenuBiz;
 
 import com.sun.faces.taglib.html_basic.InputSecretTag;
 
@@ -39,11 +41,14 @@ public class UploadGoodsAction extends Action{
 			UploadGoodsForm upf = (UploadGoodsForm)form;
 			FormFile image = upf.getImage();
 			String goodsName = upf.getGoodsName();
-			String brand = upf.getBrand();
-			String dec = upf.getDescribe();
-			String newd = upf.getNewDegree();
+			
+			String dec = upf.getGoodsDec();
+			String newd = "nnn";
+			String submenuStr = upf.getSubmenuName();
+			submenuStr = new String(submenuStr.getBytes("iso-8859-1"),"UTF-8");
+			Submenu submenu = (new MenuBiz()).getSubMenuByName(submenuStr);
 			String userId = (String)session.getAttribute("userId");
-			System.out.println(userId+" "+goodsName+" "+brand+" "+dec+" "+newd);
+			//System.out.print(submenu);
 			
 			
 			//存储图片
@@ -72,17 +77,9 @@ public class UploadGoodsAction extends Action{
 			image.destroy();
 			
 			//添加物品到数据库
-			boolean tag =false;
-			tag=goodsbiz.addGoods(userId,goodsName,"1234",brand,dec);
-			if(tag){
-				
-				System.out.println("success");
-			}
-			else {
-				
-				System.out.println("false");
-			}
-			
+			User user = (new UserDAO()).findById(userId);
+			//System.out.println(user.getUserId());
+			goodsbiz.addGoods(user,goodsName,realPath,submenu,dec,newd);
 			
 			
 			

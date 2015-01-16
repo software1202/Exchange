@@ -1,10 +1,13 @@
 package Biz;
 
+import java.util.Date;
 import java.util.List;
 
 import hibernate.Goods;
 import hibernate.HibernateSessionFactory;
+import hibernate.Submenu;
 import hibernate.SubmenuDAO;
+import hibernate.User;
 import hibernate.UserDAO;
 
 import org.hibernate.Query;
@@ -13,23 +16,29 @@ import org.hibernate.Session;
 
 
 public class GoodsBiz {
-	public boolean addGoods(String userId,String goodsName,String imgSrc,String brand,String describe) {
+	public boolean addGoods(User user,String goodsName,String imgSrc,Submenu submenu,String describe,String newd) {
 		Goods goods = new Goods();
 		goods.setGoodsName(goodsName);
-		goods.setGoodsId("10033");
-		goods.setBrand(brand);
+		Date date = new Date();
+		String goodsId = "g"+date.getTime();
+		goods.setGoodsId(goodsId);
+		goods.setSubmenu(submenu);
 		goods.setDescribe(describe);
 		goods.setImage(imgSrc);
-		goods.setUser((new UserDAO()).findById(userId));
-		goods.setSubmenu(new SubmenuDAO().findById("001"));
-		Session session= HibernateSessionFactory.getSession();
+		goods.setNewDegree(newd);
+		goods.setStatus("00");
+		goods.setUser(user);
+		goods.setBrand("21");
+		goods.setNewDegree("23");
+		
+		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();
 		session.save(goods);
-		
-		session.beginTransaction().commit();
+		session.getTransaction().commit();
 		session.close();
 		return true;
 	}
+	
 	public Goods getGoods(String goodsId){
 		Session session = HibernateSessionFactory.getSession();
 		session.beginTransaction();

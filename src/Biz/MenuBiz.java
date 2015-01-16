@@ -1,6 +1,7 @@
 package Biz;
 
 import hibernate.HibernateSessionFactory;
+import hibernate.Submenu;
 
 import java.util.List;
 
@@ -23,6 +24,17 @@ public class MenuBiz {
 		Query query = session.createQuery("from Submenu where menu='"+MenuId+"'");
 	
 		return query.list();
+	}
+	
+	public Submenu getSubMenuByName(String subMenuName){
+		Session session = HibernateSessionFactory.getSession();
+		
+		Query query = session.createQuery("from Submenu where subMenuName='"+subMenuName+"'");
+		
+		Submenu submenu = (Submenu)query.list().get(0);
+		
+		return submenu;
+		
 	}
 	
 }

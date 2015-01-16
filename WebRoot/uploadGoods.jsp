@@ -265,12 +265,12 @@ function clacImgZoomParam( maxWidth, maxHeight, width, height ){
 					}
 				 %>
 			</SELECT>
-			<SELECT class="input_box" name="submenu" id="city">
+			<SELECT class="input_box" name="submenuName" id="city">
 				<OPTION VALUE="0">
 					请选择子分类
 				</OPTION>
 			</SELECT>
-             		
+   
               </div>
           </td>
           <td style="width:200px">
@@ -292,16 +292,16 @@ function clacImgZoomParam( maxWidth, maxHeight, width, height ){
           <td> 
               <div class="form_label">
               <%
-              		String description=(String)request.getAttribute("description");
+              		String description=(String)request.getAttribute("goodsDec");
                     if(description!=null){
                     %>
-                      <input type="text" class="input_box" name="description" value="<%out.print(description);%>"/><br/>
+                      <input type="text" class="input_box" name="goodsDec" value="<%out.print(description);%>"/><br/>
                       <%
                     }
                     else
                     {
                     %>
-                      <input type="text" class="input_box" name="description" /><br/> 
+                      <input type="text" class="input_box" name="goodsDec" /><br/> 
                       <%
                       }
                

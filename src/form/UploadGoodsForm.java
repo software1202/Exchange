@@ -16,80 +16,122 @@ public class UploadGoodsForm extends ActionForm{
 	private String goodsName;
 	private String brand;
 	private String userId;
-	private String describe;
-	private String SubmenuName;
-	private String SubmenuId;
+	private String goodsDec;
+	private String submenuName;
+	private String submenuId;
 	private String NewDegree;
 	private String goodsId;
 	
-	public void setNewDegree(String newDegree) {
-		NewDegree = newDegree;
-	}
 	
-	public String getNewDegree() {
-		return NewDegree;
-	}
-	public String getSubmenuName() {
-		return SubmenuName;
-	}
-	
-	public void setSubmenuName(String submenuName) {
-		SubmenuName = submenuName;
-	}
-	
-	public void setSubmenuId(String submenuId) {
-		SubmenuId = submenuId;
-	}
-	public String getSubmenuId() {
-		return SubmenuId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	
-	public void setGoodsId(String goodsId) {
-		this.goodsId = goodsId;
-	}
-	
-	public String getGoodsId() {
-		return goodsId;
-	}
 	
 	public FormFile getImage() {
 		return image;
 	}
-	
+
+
+
 	public void setImage(FormFile image) {
 		this.image = image;
 	}
-	
+
+
+
 	public String getGoodsName() {
 		return goodsName;
 	}
-	
+
+
+
 	public void setGoodsName(String goodsName) {
 		this.goodsName = goodsName;
 	}
-	
+
+
+
 	public String getBrand() {
 		return brand;
 	}
-	
+
+
+
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	
-	public String getDescribe() {
-		return describe;
+
+
+
+	public String getUserId() {
+		return userId;
 	}
-	
-	public void setDescribe(String describe) {
-		this.describe = describe;
+
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	
+
+
+
+	public String getGoodsDec() {
+		return goodsDec;
+	}
+
+
+
+	public void setGoodsDec(String goodsDec) {
+		this.goodsDec = goodsDec;
+	}
+
+
+
+	public String getSubmenuName() {
+		return submenuName;
+	}
+
+
+
+	public void setSubmenuName(String submenuName) {
+		this.submenuName = submenuName;
+	}
+
+
+
+	public String getSubmenuId() {
+		return submenuId;
+	}
+
+
+
+	public void setSubmenuId(String submenuId) {
+		this.submenuId = submenuId;
+	}
+
+
+
+	public String getNewDegree() {
+		return NewDegree;
+	}
+
+
+
+	public void setNewDegree(String newDegree) {
+		NewDegree = newDegree;
+	}
+
+
+
+	public String getGoodsId() {
+		return goodsId;
+	}
+
+
+
+	public void setGoodsId(String goodsId) {
+		this.goodsId = goodsId;
+	}
+
+
+
 	@Override
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
@@ -112,16 +154,16 @@ public class UploadGoodsForm extends ActionForm{
 			return errors;
 		}
 		request.setAttribute("GoodsName", goodsName);
-		if(brand.equals("")){
-			errors.add("noBrand",new ActionMessage("noBrandError"));
-			return errors;
-		}
-		request.setAttribute("Brand", brand);
+		//if(brand.equals("")){
+		//	errors.add("noBrand",new ActionMessage("noBrandError"));
+		//	return errors;
+		//}
+		//request.setAttribute("Brand", brand);
 //		if(describe.equals("")){
 //			errors.add("noDec",new ActionMessage("noDecError"));
 //			return errors;
 //		}
-		request.setAttribute("Describe", describe);
+		request.setAttribute("Describe", goodsDec);
 		return errors;
 	}
 }
